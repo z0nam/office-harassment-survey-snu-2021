@@ -1,0 +1,22 @@
+{% extends "otree/Page.html" %}
+{% load otree static %}
+
+{% block global_styles  %}
+
+    <style>
+        .tableFixedHead thead th {
+            position: sticky;
+            top:0;
+        }
+        .table > thead > tr > th {
+            word-break: keep-all;
+        }
+
+        .table > tbody > tr > td {
+            vertical-align: middle;
+        }
+    </style>
+{% endblock %}
+
+{% block global_scripts  %}
+{% endblock %}

@@ -1,0 +1,43 @@
+{{ block title }}
+     직장문화에 대한 평가 (1/2)
+{{ endblock }}
+{{ block content }}
+
+    <div class="alert border">
+        <p>
+             귀하가 현재 다니는 직장의 분위기는 어디에 가깝습니까?
+        </p>
+    </div>
+
+    <table class="tableFixedHead table table-striped table-bordered">
+        <thead>
+        <tr>
+            <th>
+                {{ for choice in L4_CHOICES }}
+                <th>{{choice}}</th>
+                {{ endfor }}
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+            {{ for culture_question in form }}
+                {{ if forloop.counter >= CULTURE_INIT and forloop.counter <= CULTURE_END}}
+                <tr>
+                    <th>
+                        {{ culture_question.label }}
+                    </th>
+                    {{ for choice in culture_question }}
+                        <td class="text-center align-middle">
+                            {{ choice }}
+                        </td>
+                    {{ endfor }}
+                </tr>
+                {{ endif }}
+            {{ endfor }}
+        </tbody>
+    </table>
+    <button class="btn btn-primary btn-large active">
+        모든 질문에 답하신 뒤에 클릭해주세요
+    </button>
+
+{{ endblock }}
