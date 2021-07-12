@@ -8,15 +8,25 @@
 
 <script>
     $(document).ready(function(){
-        op_checker("id_har1_8-9", "id_har1_8_op");
+        hide_others(
+            [
+                'id_har1s_8_1st',
+                'id_har1s_8_2nd',
+                'id_har1s_8_3rd',
+            ],
+            9
+        )
     })
 </script>
 
 {{ endblock }}
 
+
 {{ block content }}
 
-    {{ formfields }}
+    <div class="alert border">
+        {{formfields}}
+    </div>
     {{ next_button }}
 
 {{ endblock }}

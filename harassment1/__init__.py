@@ -74,6 +74,40 @@ def make_field_har1_13(order):
         ]
     )
 
+def make_field_har1s_8(order):
+    return models.IntegerField(
+        label="위 상황을 목격한 후 피해자를 돕거나 직장에 적극적인 조치를 취하지 않은 이유는 무엇입니까?(%d순위)" %  order,
+        widget=widgets.RadioSelect,
+        choices=[
+            [1, "① 문제를 제기할만큼 심각한 것은 아니거나 일상에서 흔한 일이라 생각해서 "],
+            [2, "② 피해자와 함께 이상한 사람, 분란을 일으킨 사람으로 여겨질 것 같아서	"],
+            [3, "③ 업무능력 부족, 실수 등 피해자에게도 책임이 있다고 생각해서"],
+            [4, "④ 피해자가 원하지 않을 것 같아서"],
+            [5, "⑤ 알려도 공정하게 사건이 처리되지 않거나 상황이 개선되지 않을 것 같아서"],
+            [6, "⑥ 딱히 도와줄 방법을 모르거나 담당 기구를 몰라서"],
+            [7, "⑦ 직장내 괴롭힘에 대하여 문제제기를 하기 어려운 분위기 때문에"],
+            [8, "⑧ 나까지 직무 배치, 평가, 승진, 해고, 근로계약연장, 정규직 전환 등 인사상 불이익을 받을까봐"],
+            [9, "⑨ 남의 일에 관여할 이유가 없어서"],
+        ]
+    )
+
+def make_field_har1s_12(order):
+    return models.IntegerField(
+        label="귀하가 목격한 상황이 발생하게 된 가장 주된 원인은 무엇이라 생각합니까?(%d순위)" % order,
+        widget=widgets.RadioSelect,
+        choices=[
+            [1, "① 직장의 경영정책(인력감축, 고객서비스정책 등)"],
+            [2, "② 실적과 성과를 강조하는 직장 분위기 "],
+            [3, "③ 성차별적 조직 문화"],
+            [4, "④ 상명하복의 조직 문화"],
+            [5, "⑤ 열악한 근무 여건과 과도한 업무로 인한 스트레스"],
+            [6, "⑥ 고용 불안정"],
+            [7, "⑦ 가해자 개인의 인성 문제"],
+            [8, "⑧ 피해자 잘못"],
+            [9, "⑨ 기타"],
+        ]
+    )
+
 
 class Player(BasePlayer):
     har1_experienced_1 = make_field_har1_experienced(1)
@@ -159,12 +193,16 @@ class Player(BasePlayer):
         ]
     )
 
-    har1_4 = models.IntegerField( #todo: har1_3 == 4인 경우 노출되지 않도록 할 것. 현재는 무조건 노출되는 상태임
+    #Har1_1
+
+    har1_4 = models.IntegerField(
         label="그 가해자의 성별은 무엇입니까? 여럿인 경우 주된 가해자를 기준으로 응답해주십시오",
         widget=widgets.RadioSelect,
         choices=GlobalConstants.GENDER_CHOICES,
         blank=True,
     )
+
+    #Har1_1_plus
 
     har1_5_1 = models.BooleanField(
         widget=widgets.CheckboxInput,
@@ -239,26 +277,26 @@ class Player(BasePlayer):
     )
 
     har1_6_op = models.LongStringField(
-        label="기타(직접입력)",
+        label="⑪ 기타(직접입력)",
         blank=True,
     )
 
-    # HAR1_2  har1-7
+    # HAR1_2
 
     har1_7_1st = make_field_har1_7(1)
     har1_7_1st_op = models.LongStringField(
         blank=True,
-        label="1순위(기타) 직접입력"
+        label="",
     )
     har1_7_2nd = make_field_har1_7(2)
     har1_7_2nd_op = models.LongStringField(
         blank=True,
-        label="2순위(기타) 직접입력"
+        label="",
     )
     har1_7_3rd = make_field_har1_7(3)
     har1_7_3rd_op = models.LongStringField(
         blank=True,
-        label="3순위(기타) 직접입력"
+        label="",
     )
 
 
@@ -281,7 +319,7 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect,
     )
     har1_8_op = models.LongStringField(
-        label="기타(직접입력)",
+        label="",
         blank=True,
     )
 
@@ -295,59 +333,168 @@ class Player(BasePlayer):
     #Har1_5
     har1_10 = models.IntegerField(
         label="피해 이후 귀하에게 다음과 같은 상황이 발생한 적 있습니까? 다음 중 해당하는 것을 모두 골라주십시오.",
-        widget=widgets.RadioSelect,
         choices=[
             [1, "① 피해가 남들이 보는 앞에서 혹은 행정절차(성과평가, 승진, 휴가 등)를 통해 공공연히 이뤄져서"],
             [2, "② 피해 이후 직장동료, 노조, 상담기구 등을 통한 상담이나 하소연하는 과정에서 소문이 나서"],
             [3, "③ 고충처리나 직장으로부터의 지원 등 문제제기 절차를 진행하는 과정(조사, 피해자의 휴가 사용 등을 통해서)에서 비밀보호가 제대로 되지 않아서"],
             [4, "④ 가해자가 먼저 제멋대로 소문을 내고 다녀서 "],
             [5, "⑤ 가해자에 대한 징계나 조치(피해자와의 공간분리, 배치이동 등) 과정에서 소문이 나서"],
-            [6, "⑥ 기타________________ "],
-        ]
+            [6, "⑥ 기타(직접입력)"],
+        ],
+    widget=widgets.RadioSelect,
     )
     har1_10_op = models.LongStringField(
-        label="기타(직접입력)",
+        label="",
+        blank=True,
     )
 
     #Har1_6
 
-    har1_11 = models.IntegerField(
-        label="피해 이후 귀하에게 다음과 같은 상황이 발생한 적 있습니까? 다음 중 해당하는 것을 모두 골라주십시오.",
-        widget=widgets.RadioSelect,
-        choices=[
-            [1, "① 직장에 문제제기하거나 분란을 만들었다는 이유로 비난을 받음"],
-            [2, "② 악의적으로 가해자를 신고했다거나 나에게 잘못이 있는 것처럼 오해받거나 소문에 시달림"],
-            [3, "③ 사람들이 나를 피하거나 따돌림"],
-            [4, "④ 다른 유사사건이 생기거나 논의될 때마다 나의 피해 사례를 굳이 반복해 거론함"],
-            [5, "⑤ 분란을 만들지 말고 조용히 넘어가기를 강요받거나 참으라는 얘기를 들음"],
-            [6, "⑥ 회사가 인사상 불이익 처우를 암시하며 사건을 축소 또는 은폐하려 함"],
-            [7, "⑦ 회사가 가해자와의 합의를 종용함"],
-            [8, "⑧ 과도한 업무 혹은 다른 업무를 부여받거나 업무를 부여받지 못함"],
-            [9, "⑨ 회사가 가해자가 아닌 나만 부서이동을 시킴"],
-            [10, "⑩ 근무평가, 승진, 근로계약 갱신 거절 등 인사상 부당한 대우나 불이익을 받음"],
-            [11, "⑪ 내 조력자에게 해고, 징계, 고용, 업무상 불이익 등을 주거나 끼어들지 말라고 회유, 강요하는 등 괴롭힘이 가해짐"],
-        ]
+    # har1_11 = models.IntegerField(
+    #     label="피해 이후 귀하에게 다음과 같은 상황이 발생한 적 있습니까? 다음 중 해당하는 것을 모두 골라주십시오.",
+    #     widget=widgets.RadioSelect,
+    #     choices=[
+    #         [1, "① 직장에 문제제기하거나 분란을 만들었다는 이유로 비난을 받음"],
+    #         [2, "② 악의적으로 가해자를 신고했다거나 나에게 잘못이 있는 것처럼 오해받거나 소문에 시달림"],
+    #         [3, "③ 사람들이 나를 피하거나 따돌림"],
+    #         [4, "④ 다른 유사사건이 생기거나 논의될 때마다 나의 피해 사례를 굳이 반복해 거론함"],
+    #         [5, "⑤ 분란을 만들지 말고 조용히 넘어가기를 강요받거나 참으라는 얘기를 들음"],
+    #         [6, "⑥ 회사가 인사상 불이익 처우를 암시하며 사건을 축소 또는 은폐하려 함"],
+    #         [7, "⑦ 회사가 가해자와의 합의를 종용함"],
+    #         [8, "⑧ 과도한 업무 혹은 다른 업무를 부여받거나 업무를 부여받지 못함"],
+    #         [9, "⑨ 회사가 가해자가 아닌 나만 부서이동을 시킴"],
+    #         [10, "⑩ 근무평가, 승진, 근로계약 갱신 거절 등 인사상 부당한 대우나 불이익을 받음"],
+    #         [11, "⑪ 내 조력자에게 해고, 징계, 고용, 업무상 불이익 등을 주거나 끼어들지 말라고 회유, 강요하는 등 괴롭힘이 가해짐"],
+    #     ]
+    # )
+
+    har1_11_1 = models.BooleanField(
+        label="① 직장에 문제제기하거나 분란을 만들었다는 이유로 비난을 받음",
+        widget=widgets.CheckboxInput,
+        blank=True,
     )
 
-    har1_12 = models.IntegerField(
-        label="",
-        widget=widgets.RadioSelect,
-        choices=[
-            [1, "① 근무 의욕, 업무 능력, 집중도가 떨어졌다."],
-            [2, "② 상급자나 직장에 대한 신뢰가 떨어졌다."],
-            [3, "③ 또 피해를 당할까봐 직장 동료들과 관계 맺는 것이 이전보다 조심스러워졌다. "],
-            [4, "④ 이직을 고민했다. "],
-            [5, "⑤ 분노나 불안감, 우울, 무력감, 감정조절 및 수면에 어려움을 느꼈다."],
-            [6, "⑥ 이직을 고민하였다."],
-            [7, "⑦ 특별한 영향은 없었다."],
-        ]
+    har1_11_2 = models.BooleanField(
+        label="② 악의적으로 가해자를 신고했다거나 나에게 잘못이 있는 것처럼 오해받거나 소문에 시달림",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har1_11_3 = models.BooleanField(
+        label="③사람들이 나를 피하거나 따돌림",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har1_11_4 = models.BooleanField(
+        label="④다른 유사사건이 생기거나 논의될 때마다 나의 피해 사례를 굳이 반복해 거론함",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har1_11_5 = models.BooleanField(
+        label="⑤분란을 만들지 말고 조용히 넘어가기를 강요받거나 참으라는 얘기를 들음",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har1_11_6 = models.BooleanField(
+        label="⑥회사가 인사상 불이익 처우를 암시하며 사건을 축소 또는 은폐하려 함",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har1_11_7 = models.BooleanField(
+        label="⑦회사가 가해자와의 합의를 종용함",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har1_11_8 = models.BooleanField(
+        label="⑧과도한 업무 혹은 다른 업무를 부여받거나 업무를 부여받지 못함",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har1_11_9 = models.BooleanField(
+        label="⑨회사가 가해자가 아닌 나만 부서이동을 시킴",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har1_11_10 = models.BooleanField(
+        label="⑩근무평가, 승진, 근로계약 갱신 거절 등 인사상 부당한 대우나 불이익을 받음",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har1_11_11 = models.BooleanField(
+        label="⑪내 조력자에게 해고, 징계, 고용, 업무상 불이익 등을 주거나 끼어들지 말라고 회유, 강요하는 등 괴롭힘이 가해짐",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    # har1_12 = models.IntegerField(
+    #     label="위 피해를 경험한 후 귀하에게는 다음과 같은 변화가 있었습니까? 다음 중 해당하는 것을 모두 골라주십시오",
+    #     widget=widgets.RadioSelect,
+    #     choices=[
+    #         [1, "① 근무 의욕, 업무 능력, 집중도가 떨어졌다."],
+    #         [2, "② 상급자나 직장에 대한 신뢰가 떨어졌다."],
+    #         [3, "③ 또 피해를 당할까봐 직장 동료들과 관계 맺는 것이 이전보다 조심스러워졌다. "],
+    #         [4, "④ 이직을 고민했다. "],
+    #         [5, "⑤ 분노나 불안감, 우울, 무력감, 감정조절 및 수면에 어려움을 느꼈다."],
+    #         [6, "⑥ 이직을 고민하였다."],
+    #         [7, "⑦ 특별한 영향은 없었다."],
+    #     ]
+    # )
+
+    har1_12_1 = models.BooleanField(
+        label="① 근무 의욕, 업무 능력, 집중도가 떨어졌다.",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har1_12_2 = models.BooleanField(
+        label="② 상급자나 직장에 대한 신뢰가 떨어졌다.",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har1_12_3 = models.BooleanField(
+        label="③ 또 피해를 당할까봐 직장 동료들과 관계 맺는 것이 이전보다 조심스러워졌다. ",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har1_12_4 = models.BooleanField(
+        label="④ 이직을 고민했다. ",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har1_12_5 = models.BooleanField(
+        label="⑤ 분노나 불안감, 우울, 무력감, 감정조절 및 수면에 어려움을 느꼈다.",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har1_12_6 = models.BooleanField(
+        label="⑥ 이직을 고민하였다.",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har1_12_7 = models.BooleanField(
+        label="⑦ 특별한 영향은 없었다.",
+        widget=widgets.CheckboxInput,
+        blank=True,
     )
 
     har1_13_1st = make_field_har1_13(1)
     har1_13_2nd = make_field_har1_13(2)
 
 
-    #HaR1S_1
+    #Har1s.html
 
     har1_seen_critical = models.IntegerField(
         min=1,
@@ -374,6 +521,8 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect,
         choices=GlobalConstants.GENDER_CHOICES,
     )
+
+    # Har1s_3
 
     har1s_5 = models.IntegerField(
         label="피해자의 성별은 무엇입니까? 여럿인 경우 주된 피해자를 기준으로 응답해주십시오.",
@@ -435,22 +584,115 @@ class Player(BasePlayer):
         blank=True,
     )
 
-    har1s_7_8 = models.BooleanField(
-        widget=widgets.CheckboxInput,
+    # har1s_7_8 = models.BooleanField(
+    #     widget=widgets.CheckboxInput,
+    #     label="⑧ 기타(직접입력)",
+    #     blank=True,
+    # )
+
+    har1s_7_op = models.LongStringField(
         label="⑧ 기타(직접입력)",
         blank=True,
     )
 
-    har1s_7_op = models.LongStringField(
-        label="기타(직접입력)",
+
+    #Har1s_4
+
+    har1s_8_1st = make_field_har1s_8(1)
+    har1s_8_2nd = make_field_har1s_8(2)
+    har1s_8_3rd = make_field_har1s_8(3)
+
+    #Har1s_5
+
+    har1s_9 = models.IntegerField(
+        label="피해 상황은 이후 귀하가 원치 않았던 직장 구성원들에게까지 알려지게 되었습니까? ",
+        widget=widgets.RadioSelect,
+        choices=GlobalConstants.YNU_CHOICES,
+    )
+
+    #Har1s_6
+
+    har1s_10_1 = models.BooleanField(
+        label="① 피해가 남들이 보는 앞에서 혹은 행정절차(성과평가, 승진, 휴가 등)를 통해 공공연히 이뤄져서",
+        widget=widgets.CheckboxInput,
         blank=True,
     )
 
+    har1s_10_2 = models.BooleanField(
+        label="② 피해자가 직장동료, 노조, 상담기구 등을 통한 상담이나 하소연하는 과정에서 소문이 나서",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
 
-    #Har1s_
+    har1s_10_3 = models.BooleanField(
+        label="③ 고충처리나 직장으로부터의 지원 등 문제제기 절차를 진행하는 과정(조사,  피해자의 휴가 사용 등을 통해서)에서 비밀보호가 제대로 되지 않아서",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har1s_10_4 = models.BooleanField(
+        label="④ 가해자가 먼저 제멋대로 소문을 내고 다녀서 ",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har1s_10_5 = models.BooleanField(
+        label="⑤ 가해자에 대한 징계나 조치(피해자와의 공간분리, 배치이동 등) 과정에서 소문이 나서",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    # har1s_10_6 = models.BooleanField(
+    #     label="⑥ 기타________________ ",
+    #     widget=widgets.CheckboxInput,
+    #     blank=True,
+    # )
+
+    har1s_10_op = models.LongStringField(
+        label="⑥ 기타(직접입력)",
+        blank=True,
+    )
+
+    # Har1s_7
+
+    har1s_11_1 = models.BooleanField(
+        label="① 근무 의욕, 업무 능력, 집중도가 떨어졌다.",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har1s_11_2 = models.BooleanField(
+        label="② 상급자나 직장에 대한 신뢰가 떨어졌다.",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har1s_11_3 = models.BooleanField(
+        label="③ 나도 피해를 경험하게 될까봐 직장 동료들과 관계 맺는 것이 이전보다 조심스러워졌다. ",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har1s_11_4 = models.BooleanField(
+        label="④ 내가 가해자로 지목될 수도 있을까봐 직장 동료들과 선별적으로 관계를 맺게 되었다. ",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har1s_11_5 = models.BooleanField(
+        label="⑤ 특별한 영향은 없었다.",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har1s_12_1st = make_field_har1s_12(1)
+    har1s_12_2nd = make_field_har1s_12(2)
 
 
-# PAGES
+
+
+############################################# PAGES ######################################################
+
 class Experience(Page):
     form_model = 'player'
     form_fields = [
@@ -530,20 +772,6 @@ class Har1(Page):
     form_fields=[
         'har1_experienced_critical',
         'har1_3',
-        'har1_4',
-        'har1_5_1',
-        'har1_5_2',
-        'har1_6_1',
-        'har1_6_2',
-        'har1_6_3',
-        'har1_6_4',
-        'har1_6_5',
-        'har1_6_6',
-        'har1_6_7',
-        'har1_6_8',
-        'har1_6_9',
-        'har1_6_10',
-        'har1_6_op',
     ]
 
     @staticmethod
@@ -552,9 +780,11 @@ class Har1(Page):
             'CASE': player.participant.HAR1_CASE,
             'EXPERIENCED_INDICES': player.participant.HAR1_EXPERIENCED_INDICES,
             'EXPERIENCED_LIST': player.participant.HAR1_EXPERIENCED_LIST,
-            'SEEN_LIST': player.participant.HAR1_SEEN_INDICES,
+            'SEEN_INDICES': player.participant.HAR1_SEEN_INDICES,
+            'SEEN_LIST': player.participant.HAR1_SEEN_LIST,
         }
 
+    @staticmethod
     def is_displayed(player):
         # Experience.html  이 실행되고 한 번 정리해야 하는데 여기 말고 정리할 수 있는 곳을 찾을 수 없다.
         # 코드 스멜이 나지만 일단 여기다 쓰자.
@@ -672,9 +902,53 @@ def har1_experienced_critical_choices(player):
 
 def har1_seen_critical_choices(player):
     choices = [
-        v for i, v in enumerate(player.participant.HAR1_SEEN_List)
+        v for i, v in enumerate(player.participant.HAR1_SEEN_LIST)
     ]
     return choices
+
+
+class Har1_1(Page):
+    form_model='player'
+    form_fields=[
+        'har1_4',
+    ]
+
+    def is_displayed(player):
+        if player.participant.HAR1_CASE == "PASS":
+            return False
+        elif not player.participant.HAR1_EXP_GOGO:
+            return False
+        elif player.har1_3 == 4:
+            return False
+        else:
+            return True
+
+
+class Har1_1_plus(Page):
+    form_model='player'
+    form_fields=[
+        'har1_5_1',
+        'har1_5_2',
+        'har1_6_1',
+        'har1_6_2',
+        'har1_6_3',
+        'har1_6_4',
+        'har1_6_5',
+        'har1_6_6',
+        'har1_6_7',
+        'har1_6_8',
+        'har1_6_9',
+        'har1_6_10',
+        'har1_6_op',
+    ]
+
+    def is_displayed(player):
+        if player.participant.HAR1_CASE == "PASS":
+            return False
+        elif not player.participant.HAR1_EXP_GOGO:
+            return False
+        else:
+            return True
 
 
 class Har1_2(Page):
@@ -688,6 +962,7 @@ class Har1_2(Page):
         'har1_7_3rd_op',
     ]
 
+    @staticmethod
     def vars_for_template(player):
         return {
             'EXPERIENCED_INDICES': player.participant.HAR1_EXPERIENCED_INDICES,
@@ -751,7 +1026,8 @@ class Har1_3(Page):
             return False
         if not player.participant.HAR1_EXP_GOGO:
             return False
-        return player.participant.HAR1_8
+        else:
+            return player.participant.HAR1_8
 
 
 class Har1_4(Page):
@@ -765,7 +1041,8 @@ class Har1_4(Page):
             return False
         if not player.participant.HAR1_EXP_GOGO:
             return False
-        return True
+        else:
+            return True
 
 
 class Har1_5(Page):
@@ -786,8 +1063,24 @@ class Har1_5(Page):
 class Har1_6(Page):
     form_model='player'
     form_fields=[
-        'har1_11',
-        'har1_12',
+        'har1_11_1',
+        'har1_11_2',
+        'har1_11_3',
+        'har1_11_4',
+        'har1_11_5',
+        'har1_11_6',
+        'har1_11_7',
+        'har1_11_8',
+        'har1_11_9',
+        'har1_11_10',
+        'har1_11_11',
+        'har1_12_1',
+        'har1_12_2',
+        'har1_12_3',
+        'har1_12_4',
+        'har1_12_5',
+        'har1_12_6',
+        'har1_12_7',
         'har1_13_1st',
         'har1_13_2nd',
     ]
@@ -802,19 +1095,29 @@ class Har1_6(Page):
 
 
 class Har1s(Page):
-    form_model = 'player',
+    form_model = 'player'
     form_fields = [
         'har1_seen_critical',
         'har1s_3',
     ]
 
+    @staticmethod
+    def vars_for_template(player):
+        return {
+            'CASE': player.participant.HAR1_CASE,
+            'EXPERIENCED_INDICES': player.participant.HAR1_EXPERIENCED_INDICES,
+            'EXPERIENCED_LIST': player.participant.HAR1_EXPERIENCED_LIST,
+            'SEEN_INDICES': player.participant.HAR1_SEEN_INDICES,
+            'SEEN_LIST': player.participant.HAR1_SEEN_LIST,
+        }
 
     def is_displayed(player):
         if player.participant.HAR1_CASE == "PASS":
             return False
         if player.participant.HAR1_EXP_GOGO:
             return False
-        return True
+        else:
+            return True
 
 
 class Har1s_2(Page):
@@ -830,14 +1133,16 @@ class Har1s_2(Page):
             return False
         if player.har1s_3 == 4:
             return False
-        return True
+        else:
+            return True
 
 
 class Har1s_3(Page):
     form_model = 'player'
     form_fields = [
         'har1s_5',
-        'har1s_6',
+        'har1s_6_1',
+        'har1s_6_2',
         'har1s_7_1',
         'har1s_7_2',
         'har1s_7_3',
@@ -845,8 +1150,7 @@ class Har1s_3(Page):
         'har1s_7_5',
         'har1s_7_6',
         'har1s_7_7',
-        'har1s_7_8',
-        'har1s_op',
+        'har1s_7_op',
     ]
 
     def is_displayed(player):
@@ -854,7 +1158,102 @@ class Har1s_3(Page):
             return False
         if player.participant.HAR1_EXP_GOGO:
             return False
+        else:
+            return True
 
 
-page_sequence = [Experience, Har1, Har1_2, Har1_3, Har1_4, Har1_5, Har1_6, Har1s,
-                 Har1s_2, Har1s_3, ]
+class Har1s_4(Page):
+    form_model = 'player'
+    form_fields = [
+        'har1s_8_1st',
+        'har1s_8_2nd',
+        'har1s_8_3rd',
+    ]
+
+    def is_displayed(player):
+        if player.participant.HAR1_CASE == "PASS":
+            return False
+        if player.participant.HAR1_EXP_GOGO:
+            return False
+        if player.har1s_7_1 or \
+                not (player.har1s_7_3 or player.har1s_7_4 or player.har1s_7_5 or player.har1s_7_6 or player.har1s_7_7):
+            return True
+        else:
+            return False
+
+
+class Har1s_5(Page):
+    form_model = 'player'
+    form_fields = [
+        'har1s_9',
+    ]
+
+    def is_displayed(player):
+        if player.participant.HAR1_CASE == "PASS":
+            return False
+        if player.participant.HAR1_EXP_GOGO:
+            return False
+        else:
+            return True
+
+
+class Har1s_6(Page):
+    form_model = 'player'
+    form_fields = [
+        'har1s_10_1',
+        'har1s_10_2',
+        'har1s_10_3',
+        'har1s_10_4',
+        'har1s_10_5',
+        'har1s_10_op',
+    ]
+
+    def is_displayed(player):
+        if player.participant.HAR1_CASE == "PASS":
+            return False
+        if player.participant.HAR1_EXP_GOGO:
+            return False
+        if player.har1s_9 == 1:
+            return True
+        else:
+            return False
+
+
+class Har1s_7(Page):
+    form_model = 'player'
+    form_fields = [
+        'har1s_11_1',
+        'har1s_11_2',
+        'har1s_11_3',
+        'har1s_11_4',
+        'har1s_11_5',
+        'har1s_12_1st',
+        'har1s_12_2nd',
+    ]
+
+    def is_displayed(player):
+        if player.participant.HAR1_CASE == "PASS":
+            return False
+        if player.participant.HAR1_EXP_GOGO:
+            return False
+        else:
+            return True
+
+page_sequence = [
+    Experience,
+    Har1,
+    Har1_1,
+    Har1_1_plus,
+    Har1_2,
+    Har1_3,
+    Har1_4,
+    Har1_5,
+    Har1_6,
+    Har1s,
+    Har1s_2,
+    Har1s_3,
+    Har1s_4,
+    Har1s_5,
+    Har1s_6,
+    Har1s_7,
+]

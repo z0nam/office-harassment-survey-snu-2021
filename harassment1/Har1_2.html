@@ -1,11 +1,33 @@
+{{ extends "global/Page.html" }}
 {{ block title }}
     목격경험
 {{ endblock }}
+
+{{ block app_scripts }}
+
+<script>
+    $(document).ready(function(){
+        // console.log("ready namun")
+        hide_others(
+            [
+                'id_har1_7_1st',
+                'id_har1_7_2nd',
+                'id_har1_7_3rd',
+            ],
+            8
+        );
+        op_checker("id_har1_7_1st-8", "id_har1_7_1st_op");
+        op_checker("id_har1_7_2nd-8", "id_har1_7_2nd_op");
+        op_checker("id_har1_7_3rd-8", "id_har1_7_3rd_op");
+    })
+</script>
+
+{{ endblock }}
+
 {{ block content }}
 
     {{ formfields }}
-<!--todo 1,2,3 순위  js 모듈 도입할 것-->
-<!--todo 기타 입력시만 텍스트박스 드러나게 조치할 것. -->
+
     {{ next_button }}
 
 {{ endblock }}

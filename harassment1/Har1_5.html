@@ -1,8 +1,21 @@
+{{ extends "global/Page.html" }}
+
 {{ block title }}
     목격경험
 {{ endblock }}
+
+{{ block app_scripts }}
+
+<script>
+    $(document).ready(function(){
+        op_checker("id_har1_10-5", "id_har1_10_op");
+    })
+</script>
+
+{{ endblock }}
+
 {{ block content }}
-<!--todo 기타입력 활성화 처리-->
+
     {{ formfields }}
     {{ next_button }}
 

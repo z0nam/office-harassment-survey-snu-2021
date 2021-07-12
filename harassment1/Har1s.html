@@ -3,7 +3,7 @@
 {{ endblock }}
 
 {{ block content }}
-    {{ if CASE == 'E3' }}
+    {{ if CASE == 'S3' }}
     <div class="alert border">
         <p>
 <!--            귀하는 <span class="alert-danger">{{ EXPERIENCED_LIST.0.1 }}</span> 의 피해를 경험했다고 응답하셨습니다.-->
@@ -18,41 +18,14 @@
     <div class="alert border">
         <p>
             귀하는 아래와 같은 피해를 목격했다고 응답하셨습니다. 이 중 귀하가 가장 심각하게 여긴 피해는 무엇입니까?
-<!--             formfield  하나고르기 필수응답이어야함.  지금은 1234로 나오는데, 분석할때 힘들다. 가급적이면 나올때 숫자가 나오게 해야 한다.  -->
-            {{formfield 'har1_ seen_critical' label=" 하나만 골라주십시오"}}
+<!--             todo  formfield  하나고르기 필수응답이어야함.  지금은 1234로 나오는데, 분석할때 힘들다. 가급적이면 나올때 숫자가 나오게 해야 한다.  -->
+<!--           todo  그런데 의도대로 입력되고 있는 것 같기도 하다. element  체크해보면 그럴수도 있다. 입력 번호 확인할 것.  -->
+            {{formfield 'har1_seen_critical' label=" 하나만 골라주십시오"}}
         </p>
     </div>
     {{ endif }}
 
-    <div class="alert border">{{formfield 'har1_3'}}</div>
-    <div class="alert border">{{formfield 'har1_4'}}</div>
-
-    <div class="alert border">
-        <p>
-            가해 행위는 어떤 방법으로 이뤄졌습니까? 다음 중 해당하는 것을 모두 골라주십시오.
-        </p>
-        {{formfield 'har1_5_1'}}
-        {{formfield 'har1_5_2'}}
-    </div>
-
-    <div class="alert border">
-        <p>
-            피해 직후 귀하는 어떻게 대처하였습니까? 다음 중 해당하는 것을 모두 골라주십시오.
-        </p>
-        {{formfield 'har1_6_1'}}
-        {{formfield 'har1_6_2'}}
-        {{formfield 'har1_6_3'}}
-        {{formfield 'har1_6_4'}}
-        {{formfield 'har1_6_5'}}
-        {{formfield 'har1_6_6'}}
-        {{formfield 'har1_6_7'}}
-        {{formfield 'har1_6_8'}}
-        {{formfield 'har1_6_9'}}
-        {{formfield 'har1_6_10'}}
-        {{formfield 'har1_6_op'}}
-    </div>
-
-
+    <div class="alert border">{{formfield 'har1s_3'}}</div>
     {{ next_button }}
 {{ endblock }}
 
