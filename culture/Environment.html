@@ -1,3 +1,4 @@
+{{ extends "global/Page.html" }}
 {{ block title }}
      직장문화에 대한 평가 (2/2)
 {{ endblock }}
@@ -15,7 +16,7 @@
         <tr>
             <th>
                 {{ for choice in L4_CHOICES }}
-                <th>{{choice}}</th>
+                <th class="bg-info">{{choice}}</th>
                 {{ endfor }}
             </th>
         </tr>

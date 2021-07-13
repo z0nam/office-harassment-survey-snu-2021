@@ -1,0 +1,30 @@
+{{ block title }}
+    피해경험
+{{ endblock }}
+
+{{ block content }}
+
+    <div class="alert border">
+        <p> 가해 행위는 어떤 방법으로 이뤄졌습니까? 다음 중 해당하는 것을 모두 골라주십시오. </p>
+        {{ formfield 'har2_6_1' }}
+        {{ formfield 'har2_6_2' }}
+    </div>
+    <div class="alert border">
+        <p>피해 직후 귀하는 어떻게 대처하였습니까? 다음 중 해당하는 것을 모두 골라주십시오.</p>
+        {{ formfield 'har2_7_1' }}
+        {{ formfield 'har2_7_2' }}
+        {{ formfield 'har2_7_3' }}
+        {{ formfield 'har2_7_4' }}
+        {{ formfield 'har2_7_5' }}
+        {{ formfield 'har2_7_6' }}
+        {{ formfield 'har2_7_7' }}
+        {{ formfield 'har2_7_8' }}
+        {{ formfield 'har2_7_9' }}
+        {{ formfield 'har2_7_10' }}
+        {{ formfield 'har2_7_op' }}
+    </div>
+
+    {{ next_button }}
+{{ endblock }}
+
+

@@ -1,7 +1,15 @@
+{{ extends "global/Page.html" }}
 {{ block title }}
      직장문화에 대한 평가 (1/2)
 {{ endblock }}
 {{ block content }}
+
+    <div class="alert-info border">
+        <h4>
+            이하에서는 귀하의 직장 경험에 대한 질문에 제시됩니다. 귀하의 직장이 본사(본점), 공장, 지사, 영업소, 출장소, 분점 등이 별도로 있는 경우, 귀하가 <u>출퇴근을 하고 있는 곳(혹은 일상적 업무 통제가 이뤄지는 곳)</u>을 기준으로 ‘직장’을 떠올려 주십시오.
+        </h4>
+
+    </div>
 
     <div class="alert border">
         <p>
@@ -14,7 +22,7 @@
         <tr>
             <th>
                 {{ for choice in L4_CHOICES }}
-                <th>{{choice}}</th>
+                <th class="bg-info">{{choice}}</th>
                 {{ endfor }}
             </th>
         </tr>

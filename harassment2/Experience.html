@@ -1,0 +1,46 @@
+{{ extends "global/Page.html" }}
+{{ block title }}
+     피해 및 목격 경험 II
+{{ endblock }}
+{{ block content }}
+     <div class="alert border">
+        <p>
+             다음은 직장내 괴롭힘 중 성적 괴롭힘의 예시입니다. 귀하는 지난 1년 동안 누군가(고객이나 거래처 직원 등 <u>외부인 제외</u>)가 직장 구성원에게 다음의 행위를 하는 것을 목격하거나 직접 경험한 적이 있습니까? 온라인(사내 전산망, SNS, 문자 등)을 통해 이뤄진 경우도 포함됩니다.
+        </p>
+    </div>
+
+        <div clas="center-align">
+            <table class="tableFixedHead table table-striped table-bordered">
+        <thead>
+        <tr>
+            <th class="bg-info">행위</th>
+            <th class="bg-info">나에게 했다</th>
+            <th class="bg-info">누군가에게 하는 것을 목격했다</th>
+        </tr>
+        </thead>
+        <tbody>
+            {{ for question in form }}
+                {{ if forloop.counter == 1 or forloop.counter == 3 or forloop.counter == 5 or forloop.counter == 7 or forloop.counter == 9 or forloop.counter == 11 or forloop.counter == 13 or forloop.counter == 15 or forloop.counter == 17 or forloop.counter == 19 or forloop.counter == 21 or forloop.counter == 23 or forloop.counter == 25 or forloop.counter == 27 or forloop.counter == 29 or forloop.counter == 31 or forloop.counter == 33 or forloop.counter == 35 }}
+                <tr>
+                    <th>
+                        {{ question.label }}
+                    </th>
+
+                    <td class="text-center align-middle">
+                        {{ question }}
+                    </td>
+                {{ else }}
+                    <td class="text-center align-middle">
+                        {{ question }}
+                    </td>
+                </tr>
+                {{ endif }}
+            {{ endfor }}
+        </tbody>
+    </table>
+    </div>
+
+
+    {{ next_button }}
+
+{{ endblock }}

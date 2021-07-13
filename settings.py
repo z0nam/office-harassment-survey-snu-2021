@@ -15,12 +15,45 @@ SESSION_CONFIGS = [
         num_demo_participants=1,
     ),
     dict(
-        name='harassment1',
+        name='culture',
+        display_name='1. [전체] 직장문화에 대한 평가',
         app_sequence=[
             'harassment1',
         ],
         num_demo_participants=1,
-    )
+    ),
+    dict(
+        name='harassment1',
+        display_name='2. 피해 및 목격 경험 Ⅰ',
+        app_sequence=[
+            'harassment1',
+        ],
+        num_demo_participants=1,
+    ),
+    dict(
+        name='harassment2',
+        display_name='3. 피해 및 목격 경험 Ⅱ',
+        app_sequence=[
+            'harassment2',
+        ],
+        num_demo_participants=1,
+    ),
+    dict(
+        name='policy',
+        display_name='4. 관련 제도 운용 실태와 정책 수요',
+        app_sequence=[
+            'policy',
+        ],
+        num_demo_participants=1,
+    ),
+    dict(
+        name='basic',
+        display_name='5. [전체]응답자 배경 정보',
+        app_sequence=[
+            'basic',
+        ],
+        num_demo_participants=1,
+    ),
 ]
 
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs
@@ -40,6 +73,14 @@ PARTICIPANT_FIELDS = [
     'HAR1_CASE', # 분기를 위한 플래그
     'HAR1_EXP_GOGO', # 피해경험 설문할지 여부 (이것이  True 면 반드시 목격설문은 패스)
     'HAR1_8',
+
+    'HAR2_CASE',
+    'HAR2_EXPERIENCED_INDICES',
+    'HAR2_EXPERIENCED_LIST',
+    'HAR2_SEEN_INDICES',
+    'HAR2_SEEN_LIST',
+    'HAR2_EXP_GOGO',
+    'HAR2_9',
 ]
 SESSION_FIELDS = []
 

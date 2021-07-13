@@ -1,0 +1,28 @@
+{{ block title }}
+    피해경험
+{{ endblock }}
+
+{{ block content }}
+    {{ if CASE == 'E3' }}
+    <div class="alert border">
+        <p>
+
+            귀하는 아래와 같은 피해를 경험했다고 응답하셨습니다. {{formfield 'har2_experienced_critical' label="확인을 위해 클릭해 주십시오"}}
+        </p>
+    </div>
+    {{ else }}
+    <div class="alert border">
+        <p>
+            귀하는 아래와 같은 피해를 경험했다고 응답하셨습니다. 이 중 귀하가 가장 심각하게 여긴 경험은 무엇입니까?
+<!--             formfield  하나고르기 필수응답이어야함.  지금은 1234로 나오는데, 분석할때 힘들다. 가급적이면 나올때 숫자가 나오게 해야 한다.  -->
+            {{formfield 'har2_experienced_critical' label=" 하나만 골라주십시오"}}
+        </p>
+    </div>
+    {{ endif }}
+
+    <div class="alert border">{{formfield 'har2_3'}}</div>
+
+    {{ next_button }}
+{{ endblock }}
+
+

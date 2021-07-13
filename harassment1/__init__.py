@@ -42,7 +42,7 @@ def make_field_har1_seen(index):
 
 def make_field_har1_7(order):
     return models.IntegerField(
-        label = "귀하가 피해 이후 개인적으로 감내하거나 적극적인 조치를 취하지 않은 이유는 무엇입니까? (%d순위)" % order,
+        label="귀하가 피해 이후 개인적으로 감내하거나 적극적인 조치를 취하지 않은 이유는 무엇입니까? (%d순위)" % order,
         widget=widgets.RadioSelect,
         choices=[
             [1, "① 문제를 제기할만큼 심각한 것은 아거나 일상에서 흔한 일이라서"],
@@ -199,7 +199,6 @@ class Player(BasePlayer):
         label="그 가해자의 성별은 무엇입니까? 여럿인 경우 주된 가해자를 기준으로 응답해주십시오",
         widget=widgets.RadioSelect,
         choices=GlobalConstants.GENDER_CHOICES,
-        blank=True,
     )
 
     #Har1_1_plus
@@ -302,28 +301,87 @@ class Player(BasePlayer):
 
     # HAR1_3
 
-    har1_8 = models.IntegerField(
-        label="이후 직장에서는 다음 중 어떠한 조치들이 이뤄졌습니까? 다음 중 해당하는 것을 모두 골라주십시오.",
-        choices=[
-            [1, "① 아무런 조치가 없었다"],
-            [2, "② 행위자가 사과하도록 했다"],
-            [3, "③행위자에게 인사조치가 있었다"],
-            [4, "④ 피해자인 나와 행위자를 분리했다"],
-            [5, "⑤ 예방 교육이나 지침 안내 등 해당사안과 관련해 직장 교육을 했다."],
-            [6, "⑥ 피해에 대한 금전적 보상이 이루어지도록 했다"],
-            [7, "⑦ 상담이나 치료, 유급 휴직 등 지원을 해주었다"],
-            [8, "⑧ 조사 결과를 내게 알려주었다"],
-            [9, "⑨ 사건 종결과 처리를 미루었다"],
-            [10, "⑩ 기타(직접입력)"],
-        ],
-        widget=widgets.RadioSelect,
-    )
-    har1_8_op = models.LongStringField(
-        label="",
+    # har1_8 = models.IntegerField(
+    #     label="이후 직장에서는 다음 중 어떠한 조치들이 이뤄졌습니까? 다음 중 해당하는 것을 모두 골라주십시오.",
+    #     choices=[
+    #         [1, "① 아무런 조치가 없었다"],
+    #         [2, "② 행위자가 사과하도록 했다"],
+    #         [3, "③행위자에게 인사조치가 있었다"],
+    #         [4, "④ 피해자인 나와 행위자를 분리했다"],
+    #         [5, "⑤ 예방 교육이나 지침 안내 등 해당사안과 관련해 직장 교육을 했다."],
+    #         [6, "⑥ 피해에 대한 금전적 보상이 이루어지도록 했다"],
+    #         [7, "⑦ 상담이나 치료, 유급 휴직 등 지원을 해주었다"],
+    #         [8, "⑧ 조사 결과를 내게 알려주었다"],
+    #         [9, "⑨ 사건 종결과 처리를 미루었다"],
+    #         [10, "⑩ 기타(직접입력)"],
+    #     ],
+    #     widget=widgets.RadioSelect,
+    # )
+
+
+    har1_8_1 = models.BooleanField(
+        label="① 아무런 조치가 없었다",
+        widget=widgets.CheckboxInput,
         blank=True,
     )
 
+    har1_8_2 = models.BooleanField(
+        label="② 행위자가 사과하도록 했다",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har1_8_3 = models.BooleanField(
+        label="③행위자에게 인사조치가 있었다",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har1_8_4 = models.BooleanField(
+        label="④ 피해자인 나와 행위자를 분리했다",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har1_8_5 = models.BooleanField(
+        label="⑤ 예방 교육이나 지침 안내 등 해당사안과 관련해 직장 교육을 했다.",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har1_8_6 = models.BooleanField(
+        label="⑥ 피해에 대한 금전적 보상이 이루어지도록 했다",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har1_8_7 = models.BooleanField(
+        label="⑦ 상담이나 치료, 유급 휴직 등 지원을 해주었다",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har1_8_8 = models.BooleanField(
+        label="⑧ 조사 결과를 내게 알려주었다",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har1_8_9 = models.BooleanField(
+        label="⑨ 사건 종결과 처리를 미루었다",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har1_8_op = models.LongStringField(
+        label="⑩ 기타(직접입력)",
+        blank=True,
+    )
+
+
+
     #Har1_4
+
     har1_9 = models.IntegerField(
         label="피해 상황은 이후 귀하가 원치 않았던 직장 구성원들에게까지 알려지게 되었습니까? ",
         widget=widgets.RadioSelect,
@@ -331,42 +389,44 @@ class Player(BasePlayer):
     )
 
     #Har1_5
-    har1_10 = models.IntegerField(
-        label="피해 이후 귀하에게 다음과 같은 상황이 발생한 적 있습니까? 다음 중 해당하는 것을 모두 골라주십시오.",
-        choices=[
-            [1, "① 피해가 남들이 보는 앞에서 혹은 행정절차(성과평가, 승진, 휴가 등)를 통해 공공연히 이뤄져서"],
-            [2, "② 피해 이후 직장동료, 노조, 상담기구 등을 통한 상담이나 하소연하는 과정에서 소문이 나서"],
-            [3, "③ 고충처리나 직장으로부터의 지원 등 문제제기 절차를 진행하는 과정(조사, 피해자의 휴가 사용 등을 통해서)에서 비밀보호가 제대로 되지 않아서"],
-            [4, "④ 가해자가 먼저 제멋대로 소문을 내고 다녀서 "],
-            [5, "⑤ 가해자에 대한 징계나 조치(피해자와의 공간분리, 배치이동 등) 과정에서 소문이 나서"],
-            [6, "⑥ 기타(직접입력)"],
-        ],
-    widget=widgets.RadioSelect,
+
+
+    har1_10_1 = models.BooleanField(
+        label="① 피해가 남들이 보는 앞에서 혹은 행정절차(성과평가, 승진, 휴가 등)를 통해 공공연히 이뤄져서",
+        widget=widgets.CheckboxInput,
+        blank=True,
     )
+
+    har1_10_2 = models.BooleanField(
+        label="② 피해 이후 직장동료, 노조, 상담기구 등을 통한 상담이나 하소연하는 과정에서 소문이 나서",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har1_10_3 = models.BooleanField(
+        label="③ 고충처리나 직장으로부터의 지원 등 문제제기 절차를 진행하는 과정(조사, 피해자의 휴가 사용 등을 통해서)에서 비밀보호가 제대로 되지 않아서",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har1_10_4 = models.BooleanField(
+        label="④ 가해자가 먼저 제멋대로 소문을 내고 다녀서 ",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har1_10_5 = models.BooleanField(
+        label="⑤ 가해자에 대한 징계나 조치(피해자와의 공간분리, 배치이동 등) 과정에서 소문이 나서",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
     har1_10_op = models.LongStringField(
-        label="",
+        label="⑥ 기타(직접입력)",
         blank=True,
     )
 
     #Har1_6
-
-    # har1_11 = models.IntegerField(
-    #     label="피해 이후 귀하에게 다음과 같은 상황이 발생한 적 있습니까? 다음 중 해당하는 것을 모두 골라주십시오.",
-    #     widget=widgets.RadioSelect,
-    #     choices=[
-    #         [1, "① 직장에 문제제기하거나 분란을 만들었다는 이유로 비난을 받음"],
-    #         [2, "② 악의적으로 가해자를 신고했다거나 나에게 잘못이 있는 것처럼 오해받거나 소문에 시달림"],
-    #         [3, "③ 사람들이 나를 피하거나 따돌림"],
-    #         [4, "④ 다른 유사사건이 생기거나 논의될 때마다 나의 피해 사례를 굳이 반복해 거론함"],
-    #         [5, "⑤ 분란을 만들지 말고 조용히 넘어가기를 강요받거나 참으라는 얘기를 들음"],
-    #         [6, "⑥ 회사가 인사상 불이익 처우를 암시하며 사건을 축소 또는 은폐하려 함"],
-    #         [7, "⑦ 회사가 가해자와의 합의를 종용함"],
-    #         [8, "⑧ 과도한 업무 혹은 다른 업무를 부여받거나 업무를 부여받지 못함"],
-    #         [9, "⑨ 회사가 가해자가 아닌 나만 부서이동을 시킴"],
-    #         [10, "⑩ 근무평가, 승진, 근로계약 갱신 거절 등 인사상 부당한 대우나 불이익을 받음"],
-    #         [11, "⑪ 내 조력자에게 해고, 징계, 고용, 업무상 불이익 등을 주거나 끼어들지 말라고 회유, 강요하는 등 괴롭힘이 가해짐"],
-    #     ]
-    # )
 
     har1_11_1 = models.BooleanField(
         label="① 직장에 문제제기하거나 분란을 만들었다는 이유로 비난을 받음",
@@ -767,9 +827,10 @@ class Experience(Page):
             'END': len(Constants.HAR1_QUESTIONS),
         }
 
+
 class Har1(Page):
-    form_model='player'
-    form_fields=[
+    form_model = 'player'
+    form_fields = [
         'har1_experienced_critical',
         'har1_3',
     ]
@@ -863,8 +924,8 @@ class Har1(Page):
         total_number_of_experienced = sum(player.participant.HAR1_EXPERIENCED_INDICES)
         total_number_of_seen = sum(player.participant.HAR1_SEEN_INDICES)
 
-        print("total_number_of_experienced is ", total_number_of_experienced)
-        print("total_number_of_seen is ", total_number_of_seen)
+        # print("total_number_of_experienced is ", total_number_of_experienced)
+        # print("total_number_of_seen is ", total_number_of_seen)
 
         return_value = False
         case = "NOT_ASSIGNED_THIS_MEANS_ERROR"
@@ -1015,9 +1076,17 @@ class Har1_2(Page):
 
 
 class Har1_3(Page):
-    form_model='player'
-    form_fields=[
-        'har1_8',
+    form_model = 'player'
+    form_fields = [
+        'har1_8_1',
+        'har1_8_2',
+        'har1_8_3',
+        'har1_8_4',
+        'har1_8_5',
+        'har1_8_6',
+        'har1_8_7',
+        'har1_8_8',
+        'har1_8_9',
         'har1_8_op',
     ]
 
@@ -1046,9 +1115,13 @@ class Har1_4(Page):
 
 
 class Har1_5(Page):
-    form_model='player'
-    form_fields=[
-        'har1_10',
+    form_model = 'player'
+    form_fields = [
+        'har1_10_1',
+        'har1_10_2',
+        'har1_10_3',
+        'har1_10_4',
+        'har1_10_5',
         'har1_10_op',
     ]
 
@@ -1061,8 +1134,8 @@ class Har1_5(Page):
 
 
 class Har1_6(Page):
-    form_model='player'
-    form_fields=[
+    form_model = 'player'
+    form_fields = [
         'har1_11_1',
         'har1_11_2',
         'har1_11_3',
@@ -1074,6 +1147,7 @@ class Har1_6(Page):
         'har1_11_9',
         'har1_11_10',
         'har1_11_11',
+
         'har1_12_1',
         'har1_12_2',
         'har1_12_3',
@@ -1081,6 +1155,7 @@ class Har1_6(Page):
         'har1_12_5',
         'har1_12_6',
         'har1_12_7',
+
         'har1_13_1st',
         'har1_13_2nd',
     ]
