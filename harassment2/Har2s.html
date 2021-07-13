@@ -7,7 +7,7 @@
     <div class="alert border">
         <p>
 <!--            귀하는 <span class="alert-danger">{{ EXPERIENCED_LIST.0.1 }}</span> 의 피해를 경험했다고 응답하셨습니다.-->
-            귀하는 아래와 같은 피해를 목격했다고 응답하셨습니다. {{formfield 'har1_seen_critical' label="확인을 위해 클릭해 주십시오"}}
+            귀하는 아래와 같은 피해를 목격했다고 응답하셨습니다. {{formfield 'har2_seen_critical' label="확인을 위해 클릭해 주십시오"}}
         </p>
 
 <!--         E3 의 경우는 이 질문이 필수가 아니기 때문에 강제로 응답함. 이해할 수 없는 이유로 아래 내용이 작동하지 않아 일단 위와 같이 처리함. 요청 들어오면 다시 고민. form  태그가 감싸져 있는지 확인해야 할 듯. -->
@@ -18,12 +18,12 @@
     <div class="alert border">
         <p>
             귀하는 아래와 같은 피해를 목격했다고 응답하셨습니다. 이 중 귀하가 가장 심각하게 여긴 피해는 무엇입니까?
-            {{formfield 'har1_seen_critical' label=" 하나만 골라주십시오"}}
+            {{formfield 'har2_seen_critical' label=" 하나만 골라주십시오"}}
         </p>
     </div>
     {{ endif }}
 
-    <div class="alert border">{{formfield 'har1s_3'}}</div>
+    <div class="alert border">{{formfield 'har2s_3'}}</div>
     {{ next_button }}
 {{ endblock }}
 

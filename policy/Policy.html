@@ -1,0 +1,93 @@
+{{ extends "global/Page.html" }}
+{{ block title }}
+     관련 제도 운용 실태와 정책 수요
+{{ endblock }}
+
+{{ block app_scripts }}
+
+<script>
+    $(document).ready(function(){
+        hide_others(
+            [
+                'id_pol5_1st',
+                'id_pol5_2nd',
+                'id_pol5_3rd',
+            ],
+            11,
+        );
+        op_checker("id_pol5_1st-11", "id_pol5_1st_op");
+        op_checker("id_pol5_2nd-11", "id_pol5_2nd_op");
+        op_checker("id_pol5_3rd-11", "id_pol5_3rd_op");
+    })
+</script>
+
+{{ endblock }}
+
+
+{{ block content }}
+
+    <div class="alert border">
+        <p>귀하의 직장은 직장 내 괴롭힘 예방 및 해결을 위한 어떤 노력을 하고 있습니까? 알고 계신 모든 것을 선택해 주십시오.</p>
+        {{ formfield 'pol1_1' }}
+        {{ formfield 'pol1_2' }}
+        {{ formfield 'pol1_3' }}
+        {{ formfield 'pol1_4' }}
+        {{ formfield 'pol1_5' }}
+        {{ formfield 'pol1_6' }}
+        {{ formfield 'pol1_7' }}
+    </div>
+    <div class="alert border">
+        {{ formfield 'pol2' }}
+    </div>
+    <div class="alert border">
+        {{ formfield 'pol3' }}
+    </div>
+
+    <div class="center-align border">
+        <p>
+            귀하는 직장내 괴롭힘과 관련한 다음의 의견에 얼마나 동의하십니까
+        </p>
+        <table class="tableFixedHead table table-striped table-bordered">
+            <thead>
+            <tr>
+                <th class="bg-info">항목</th>
+                {{ for choice in L4_CHOICES }}
+                    <th class="bg-info">{{choice}}</th>
+                {{ endfor }}
+            </tr>
+            </thead>
+            <tbody>
+                {{ for question in form }}
+                    {{ if forloop.counter >= INIT and forloop.counter < END }}
+                    <tr>
+                        <th>
+                            {{ question.label }}
+                        </th>
+                        {{ for choice in question }}
+                            <td class="text-center align-middle">
+                                {{choice}}
+                            </td>
+                        {{ endfor }}
+                    </tr>
+                    {{ endif }}
+                {{ endfor }}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="alert border">
+        {{ formfield 'pol5_1st' }}
+        {{ formfield 'pol5_1st_op' }}
+        {{ formfield 'pol5_2nd' }}
+        {{ formfield 'pol5_2nd_op' }}
+        {{ formfield 'pol5_3rd' }}
+        {{ formfield 'pol5_3rd_op' }}
+    </div>
+
+    <div class="alert border">
+        {{ formfield 'pol6' }}
+    </div>
+
+    {{ next_button }}
+
+{{ endblock }}

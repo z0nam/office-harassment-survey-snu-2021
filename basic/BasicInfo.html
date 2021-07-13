@@ -1,0 +1,45 @@
+{{ extends "global/Page.html" }}
+{{ block title }}
+    응답자 배경 정보
+{{ endblock }}
+
+{{ block app_scripts }}
+<script>
+    $(document).ready(function(){
+        op_checker("id_work_category-6", "id_work_category_op");
+        op_checker("id_work_type-4", "id_work_type_op");
+    })
+</script>
+{{ endblock }}
+
+
+{{ block content }}
+
+     <div class="alert border">
+        <h4> 다음은 개인 인적 사항에 대한 질문입니다. </h4>
+        {{ formfield 'gender' }}
+        {{ formfield 'born_year' }}
+        {{ formfield 'education' }}
+        {{ formfield 'work_area' }}
+     </div>
+
+     <div class="alert border">
+         <h4> 다음은 현재 직장 근무 상황에 대한 질문입니다.</h4>
+         {{ formfield 'work_category' }}
+         {{ formfield 'work_category_op' }}
+         {{ formfield 'work_type' }}
+         {{ formfield 'work_type_op' }}
+         {{ formfield 'work_rank' }}
+         {{ formfield 'work_form' }}
+         {{ formfield 'employment_period' }}
+         {{ formfield 'union_enrollment' }}
+         {{ formfield 'number_of_workers' }}
+         {{ formfield 'work_hour_weekly' }}
+     </div>
+
+
+    <button class="btn btn-primary btn-large active">
+        모든 질문에 답하신 뒤에 클릭해주세요
+    </button>
+
+{{ endblock }}

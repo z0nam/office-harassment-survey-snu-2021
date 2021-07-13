@@ -1,0 +1,32 @@
+{{ extends "global/Page.html" }}
+
+{{ block title }}
+    목격경험
+{{ endblock }}
+
+{{ block app_scripts }}
+
+<script>
+    $(document).ready(function(){
+        hide_others(
+            [
+                'id_har2s_8_1st',
+                'id_har2s_8_2nd',
+                'id_har2s_8_3rd',
+            ],
+            9
+        );
+    })
+</script>
+
+{{ endblock }}
+
+
+{{ block content }}
+
+    <div class="alert border">
+        {{formfields}}
+    </div>
+    {{ next_button }}
+
+{{ endblock }}

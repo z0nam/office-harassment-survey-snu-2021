@@ -27,12 +27,14 @@ def make_field_har2_experienced(index):
         blank=True,
     )
 
+
 def make_field_har2_seen(index):
     return models.BooleanField(
         label=Constants.HAR2_QUESTIONS[index-1],
         widget=widgets.CheckboxInput,
         blank=True,
     )
+
 
 def make_field_har2_8(order):
     return models.IntegerField(
@@ -65,6 +67,42 @@ def make_field_har2_14(order):
             [6, "⑥ 고용 불안정"],
             [7, "⑦ 가해자 개인의 인성 문제"],
             [8, "⑧ 내 잘못"],
+            [9, "⑨ 기타"],
+        ]
+    )
+
+
+def make_field_har2s_8(order):
+    return models.IntegerField(
+        label="위 상황을 목격한 후 피해자를 돕거나 직장에 적극적인 조치를 취하지 않은 이유는 무엇입니까? (%d순위)" % order,
+        widget=widgets.RadioSelect,
+        choices=[
+            [1, "① 문제를 제기할만큼 심각한 것은 아니거나 일상에서 흔한 일이라 생각해서 "],
+            [2, "② 피해자와 함께 이상한 사람, 분란을 일으킨 사람으로 여겨질 것 같아서"],
+            [3, "③ 업무능력 부족, 실수 등 피해자에게도 책임이 있다고 생각해서"],
+            [4, "④ 피해자가 원하지 않을 것 같아서"],
+            [5, "⑤ 알려도 공정하게 사건이 처리되지 않거나 상황이 개선되지 않을 것 같아서"],
+            [6, "⑥ 딱히 도와줄 방법을 모르거나 담당 기구를 몰라서"],
+            [7, "⑦ 직장내 괴롭힘에 대하여 문제제기를 하기 어려운 분위기 때문에"],
+            [8, "⑧ 나까지 직무 배치, 평가, 승진, 해고, 근로계약연장, 정규직 전환 등 인사상 불이익을 받을까봐"],
+            [9, "⑨ 남의 일에 관여할 이유가 없어서"],
+        ]
+    )
+
+
+def make_field_har2s_12(order):
+    return models.IntegerField(
+        label="귀하가 목격한 상황이 발생하게 된 가장 주된 원인은 무엇이라 생각합니까?(%d순위)" % order,
+        widget=widgets.RadioSelect,
+        choices=[
+            [1, "① 직장의 경영정책(인력감축, 고객서비스정책 등)"],
+            [2, "② 실적과 성과를 강조하는 직장 분위기"],
+            [3, "③ 성차별적 조직 문화"],
+            [4, "④ 상명하복의 조직 문화"],
+            [5, "⑤ 열악한 근무 여건과 과도한 업무로 인한 스트레스"],
+            [6, "⑥ 고용 불안정"],
+            [7, "⑦ 가해자 개인의 인성 문제"],
+            [8, "⑧ 피해자 잘못"],
             [9, "⑨ 기타"],
         ]
     )
@@ -480,6 +518,193 @@ class Player(BasePlayer):
     har2_14_1st = make_field_har2_14(1)
     har2_14_2nd = make_field_har2_14(2)
 
+
+
+    #Har2s
+
+    har2_seen_critical = models.IntegerField(
+        min=1,
+        max=len(Constants.HAR2_QUESTIONS),
+        widget=widgets.RadioSelect,
+    )
+
+    har2s_3 = models.IntegerField(
+        label="응답하신 행위는 누가(가해자)가 누구에게(피해자) 한 것이었습니까? 여럿인 경우 주된 가해자와 피해자의 관계를 기준으로 응답해주십시오.",
+        widget=widgets.RadioSelect,
+        choices=[
+            [1, "①상사가 부하직원에게"],
+            [2, "②동료끼리"],
+            [3, "③부하직원이 상사에게"],
+            [4, "④가해자가 누구인지 모름"],
+        ]
+    )
+
+    #Har2s_2
+
+    har2s_4 = models.IntegerField(
+        label="그 가해자의 성별은 무엇입니까? 여럿인 경우 주된 가해자를 기준으로 응답해주십시오.",
+        widget=widgets.RadioSelect,
+        choices=GlobalConstants.GENDER_CHOICES,
+    )
+
+
+    #Har2s_3
+
+    har2s_5 = models.IntegerField(
+        label="피해자의 성별은 무엇입니까? 여럿인 경우 주된 피해자를 기준으로 응답해주십시오.",
+        widget=widgets.RadioSelect,
+        choices=GlobalConstants.GENDER_CHOICES,
+    )
+
+    har2s_6_1 = models.BooleanField(
+        widget=widgets.CheckboxInput,
+        label="오프라인에서",
+        blank=True,
+    )
+
+    har2s_6_2 = models.BooleanField(
+        widget=widgets.CheckboxInput,
+        label="온라인을 통해(사내 전산망, SNS, 문자, 전화 등)",
+        blank=True,
+    )
+
+    har2s_7_1 = models.BooleanField(
+        label="① 아무에게도 이야기하지 않았다",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har2s_7_2 = models.BooleanField(
+        label="② 주변 동료에게 알렸다",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har2s_7_3 = models.BooleanField(
+        label="③ 피해자를 위로하거나 조언했다. ",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har2s_7_4 = models.BooleanField(
+        label="④ 가해자에게 직접 문제를 제기하거나 말렸다. ",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har2s_7_5 = models.BooleanField(
+        label="⑤ 상사나 부서장 등에게 상담했다.",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har2s_7_6 = models.BooleanField(
+        label="⑥ 노동조합에 알리고 상담했다.",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har2s_7_7 = models.BooleanField(
+        label="⑦ 직장 내 상담창구나 고충처리절차를 이용했다",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har2s_7_op = models.LongStringField(
+        label="⑧ 기타(직접입력)",
+        blank=True,
+    )
+
+    #Har2s_4
+
+    har2s_8_1st = make_field_har2s_8(1)
+    har2s_8_2nd = make_field_har2s_8(2)
+    har2s_8_3rd = make_field_har2s_8(3)
+
+
+    #Har2s_5
+
+    har2s_9 = models.IntegerField(
+        label="피해 상황은 이후 귀하가 원치 않았던 직장 구성원들에게까지 알려지게 되었습니까?",
+        widget=widgets.RadioSelect,
+        choices=GlobalConstants.YNU_CHOICES,
+    )
+
+    #Har1s_6
+
+    har2s_10_1 = models.BooleanField(
+        label="① 피해가 남들이 보는 앞에서 혹은 행정절차(성과평가, 승진, 휴가 등)를 통해 공공연히 이뤄져서",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har2s_10_2 = models.BooleanField(
+        label="② 피해자가 직장동료, 노조, 상담기구 등을 통한 상담이나 하소연하는 과정에서 소문이 나서",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har2s_10_3 = models.BooleanField(
+        label="③ 고충처리나 직장으로부터의 지원 등 문제제기 절차를 진행하는 과정(조사,  피해자의 휴가 사용 등을 통해서)에서 비밀보호가 제대로 되지 않아서",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har2s_10_4 = models.BooleanField(
+        label="④ 가해자가 먼저 제멋대로 소문을 내고 다녀서 ",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har2s_10_5 = models.BooleanField(
+        label="⑤ 가해자에 대한 징계나 조치(피해자와의 공간분리, 배치이동 등) 과정에서 소문이 나서",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har2s_10_op = models.LongStringField(
+        label="⑥ 기타(직접입력)",
+        blank=True,
+    )
+
+
+    #Har2s_7
+
+    har2s_11_1 = models.BooleanField(
+        label="① 근무 의욕, 업무 능력, 집중도가 떨어졌다.",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har2s_11_2 = models.BooleanField(
+        label="② 상급자나 직장에 대한 신뢰가 떨어졌다.",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har2s_11_3 = models.BooleanField(
+        label="③ 나도 피해를 경험하게 될까봐 직장 동료들과 관계 맺는 것이 이전보다 조심스러워졌다. ",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har2s_11_4 = models.BooleanField(
+        label="④ 내가 가해자로 지목될 수도 있을까봐 직장 동료들과 선별적으로 관계를 맺게 되었다. ",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har2s_11_5 = models.BooleanField(
+        label="⑤ 특별한 영향은 없었다.",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    har2s_12_1st = make_field_har2s_12(1)
+    har2s_12_2nd = make_field_har2s_12(2)
+
+
+
 ############################################# PAGES ######################################################
 
 class Experience(Page):
@@ -827,6 +1052,155 @@ class Har2_6(Page):
             return True
 
 
+class Har2s(Page):
+    form_model = 'player'
+    form_fields = [
+        'har2_seen_critical',
+        'har2s_3',
+    ]
+
+    @staticmethod
+    def vars_for_template(player):
+        return {
+            'CASE': player.participant.HAR2_CASE,
+        }
+
+    @staticmethod
+    def is_displayed(player):
+        if player.participant.HAR2_CASE == "PASS":
+            return False
+        elif player.participant.HAR2_EXP_GOGO:
+            return False
+        else:
+            return True
+
+
+class Har2s_2(Page):
+    form_model = 'player'
+    form_fields = [
+        'har2s_4',
+    ]
+
+    @staticmethod
+    def is_displayed(player):
+        if player.participant.HAR2_CASE == "PASS":
+            return False
+        elif player.participant.HAR2_EXP_GOGO:
+            return False
+        elif player.har2s_3 == 4:
+            return False
+        else:
+            return True
+
+
+class Har2s_3(Page):
+    form_model = 'player'
+    form_fields = [
+        'har2s_5',
+        'har2s_6_1',
+        'har2s_6_2',
+        'har2s_7_1',
+        'har2s_7_2',
+        'har2s_7_3',
+        'har2s_7_4',
+        'har2s_7_5',
+        'har2s_7_6',
+        'har2s_7_7',
+        'har2s_7_op',
+    ]
+
+    @staticmethod
+    def is_displayed(player):
+        if player.participant.HAR2_CASE == "PASS":
+            return False
+        elif player.participant.HAR2_EXP_GOGO:
+            return False
+        else:
+            return True
+
+
+class Har2s_4(Page):
+    form_model = 'player'
+    form_fields = [
+        'har2s_8_1st',
+        'har2s_8_2nd',
+        'har2s_8_3rd',
+    ]
+
+    @staticmethod
+    def is_displayed(player):
+        if player.participant.HAR2_CASE == "PASS":
+            return False
+        elif player.participant.HAR2_EXP_GOGO:
+            return False
+        elif player.har2s_7_1 or \
+                not (player.har2s_7_3 or player.har2s_7_4 or player.har2s_7_5 or player.har2s_7_6 or player.har2s_7_7):
+            return True
+        else:
+            return False
+
+
+class Har2s_5(Page):
+    form_model = 'player'
+    form_fields = [
+        'har2s_9',
+    ]
+
+    @staticmethod
+    def is_displayed(player):
+        if player.participant.HAR2_CASE == "PASS":
+            return False
+        if player.participant.HAR2_EXP_GOGO:
+            return False
+        else:
+            return True
+
+
+class Har2s_6(Page):
+    form_model='player'
+    form_fields = [
+        'har2s_10_1',
+        'har2s_10_2',
+        'har2s_10_3',
+        'har2s_10_4',
+        'har2s_10_5',
+        'har2s_10_op',
+    ]
+
+    @staticmethod
+    def is_displayed(player):
+        if player.participant.HAR2_CASE == "PASS":
+            return False
+        if player.participant.HAR2_EXP_GOGO:
+            return False
+        if player.har2s_9 == 1:
+            return True
+        else:
+            return False
+
+
+class Har2s_7(Page):
+    form_model = 'player'
+    form_fields = [
+        'har2s_11_1',
+        'har2s_11_2',
+        'har2s_11_3',
+        'har2s_11_4',
+        'har2s_11_5',
+        'har2s_12_1st',
+        'har2s_12_2nd',
+    ]
+
+    @staticmethod
+    def is_displayed(player):
+        if player.participant.HAR2_CASE == "PASS":
+            return False
+        if player.participant.HAR2_EXP_GOGO:
+            return False
+        else:
+            return True
+
+
 page_sequence = [
     Experience,
     Har2,
@@ -837,4 +1211,11 @@ page_sequence = [
     Har2_4,
     Har2_5,
     Har2_6,
+    Har2s,
+    Har2s_2,
+    Har2s_3,
+    Har2s_4,
+    Har2s_5,
+    Har2s_6,
+    Har2s_7,
 ]
