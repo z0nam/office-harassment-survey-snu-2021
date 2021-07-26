@@ -38,7 +38,7 @@ def make_field_har2_seen(index):
 
 def make_field_har2_8(order):
     return models.IntegerField(
-        label="귀하가 피해 이후 개인적으로 감내하거나 적극적인 조치를 취하지 않은 이유는 무엇입니까? (%d순위)" % order,
+        label="귀하가 피해 이후 개인적으로 감내하거나 적극적인 조치를 취하지 않은 이유는 무엇입니까?",
         widget=widgets.RadioSelect,
         choices=[
             [1, "① 문제를 제기할만큼 심각한 것은 아거나 일상에서 흔한 일이라서"],
@@ -56,7 +56,7 @@ def make_field_har2_8(order):
 
 def make_field_har2_14(order):
     return models.IntegerField(
-        label="귀하가 경험한 위 피해가 발생하게 된 가장 주된 원인은 무엇이라 생각합니까? (%d순위)" % order,
+        label="귀하가 경험한 위 피해가 발생하게 된 가장 주된 원인은 무엇이라 생각합니까?",
         widget=widgets.RadioSelect,
         choices=[
             [1, "① 직장의 경영정책(인력감축, 고객서비스정책 등)"],
@@ -74,7 +74,7 @@ def make_field_har2_14(order):
 
 def make_field_har2s_8(order):
     return models.IntegerField(
-        label="위 상황을 목격한 후 피해자를 돕거나 직장에 적극적인 조치를 취하지 않은 이유는 무엇입니까? (%d순위)" % order,
+        label="위 상황을 목격한 후 피해자를 돕거나 직장에 적극적인 조치를 취하지 않은 이유는 무엇입니까?",
         widget=widgets.RadioSelect,
         choices=[
             [1, "① 문제를 제기할만큼 심각한 것은 아니거나 일상에서 흔한 일이라 생각해서 "],
@@ -92,7 +92,7 @@ def make_field_har2s_8(order):
 
 def make_field_har2s_12(order):
     return models.IntegerField(
-        label="귀하가 목격한 상황이 발생하게 된 가장 주된 원인은 무엇이라 생각합니까?(%d순위)" % order,
+        label="귀하가 목격한 상황이 발생하게 된 가장 주된 원인은 무엇이라 생각합니까?",
         widget=widgets.RadioSelect,
         choices=[
             [1, "① 직장의 경영정책(인력감축, 고객서비스정책 등)"],
@@ -726,6 +726,19 @@ class Experience(Page):
         'har2_seen_7',
         'har2_experienced_8',
         'har2_seen_8',
+    ]
+
+    @staticmethod
+    def vars_for_template(player):
+        return{
+            'INIT': 1,
+            'END': len(Experience.form_fields)/2,
+        }
+
+
+class Experience2(Page):
+    form_model = 'player'
+    form_fields = [
         'har2_experienced_9',
         'har2_seen_9',
         'har2_experienced_10',
@@ -752,7 +765,7 @@ class Experience(Page):
     def vars_for_template(player):
         return{
             'INIT': 1,
-            'END': len(Constants.HAR2_QUESTIONS),
+            'END': len(Experience2.form_fields)/2,
         }
 
 
@@ -1203,6 +1216,7 @@ class Har2s_7(Page):
 
 page_sequence = [
     Experience,
+    Experience2,
     Har2,
     Har2_1,
     Har2_1_plus,

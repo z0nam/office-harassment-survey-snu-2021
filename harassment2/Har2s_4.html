@@ -1,6 +1,13 @@
 {{ extends "global/Page.html" }}
 
 {{ block title }}
+<div class="progress">
+    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+         aria-valuenow="87" aria-valuemin="0" aria-valuemax="100"
+         style="width:87%">
+      87%
+    </div>
+</div>
     목격경험
 {{ endblock }}
 
@@ -14,7 +21,7 @@
                 'id_har2s_8_2nd',
                 'id_har2s_8_3rd',
             ],
-            9
+            10
         );
     })
 </script>
@@ -24,9 +31,32 @@
 
 {{ block content }}
 
-    <div class="alert border">
-        {{formfields}}
+    <div class="center-align">
+        <table class="tableFixedHead table table-striped table-bordered">
+            <thead>
+            <tr>
+                <th class="bg-info">
+                    {{ form.har2s_8_1st.label }}
+                </th>
+                <th class="bg-info">1순위</th>
+                <th class="bg-info">2순위</th>
+                <th class="bg-info">3순위</th>
+            </tr>
+            </thead>
+            <tbody>
+                {{ for choice in form.har2s_8_1st }}
+                    <tr>
+                        <td>{{choice.label}}</td>
+                        <th id="id_har2s_8_1st"><span><input name="har2s_8_1st" id="id_har2s_8_1st-{{forloop.counter}}" type="radio" value="{{forloop.counter}}"></span></th>
+                        <th id="id_har2s_8_2nd"><span><input name="har2s_8_2nd" id="id_har2s_8_2nd-{{forloop.counter}}" type="radio" value="{{forloop.counter}}"></span></th>
+                        <th id="id_har2s_8_3rd"><span><input name="har2s_8_3rd" id="id_har2s_8_3rd-{{forloop.counter}}" type="radio" value="{{forloop.counter}}"></span></th>
+                    </tr>
+                {{ endfor }}
+            </tbody>
+        </table>
     </div>
+
+
     {{ next_button }}
 
 {{ endblock }}

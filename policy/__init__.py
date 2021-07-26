@@ -36,13 +36,18 @@ def make_field_pol4(index):
     return models.IntegerField(
         label=Constants.POL4_QUESTIONS[index-1],
         widget=widgets.RadioSelect,
-        choices=GlobalConstants.L4_CHOICES,
+        choices=[
+            [1, "전혀 그렇지 않다"],
+            [2, "별로 그렇지 않다"],
+            [3, "그렇다"],
+            [4, "매우 그렇다"],
+        ],
     )
 
 
 def make_field_pol5(order):
     return models.IntegerField(
-        label="직장 내 괴롭힘에 대한 대응에 있어, 현재 가장 시급한 것은 무엇이라 생각하십니까? 세 가지를 골라 주세요.(%d순위)" % order,
+        label="직장 내 괴롭힘에 대한 대응에 있어, 현재 가장 시급한 것은 무엇이라 생각하십니까? 세 가지를 골라 주세요.",
         widget=widgets.RadioSelect,
         choices=[
             [1, "① 피해자 보호(가해자의 분리, 상담 지원, 휴식 부여, 불이익 조치 예방 등) 강화"],
@@ -108,7 +113,11 @@ class Player(BasePlayer):
     pol2 = models.IntegerField(
         label="지난 2년간 직장내 괴롭힘 예방 교육(성희롱 예방 교육, 폭력예방교육 제외)을 받은 적이 있습니까?",
         widget=widgets.RadioSelect,
-        choices=GlobalConstants.YNU_CHOICES,
+        choices=[
+            [1, "있다"],
+            [2, "없다"],
+            [3, "모른다"],
+        ],
     )
 
     pol3 = models.IntegerField(
@@ -181,7 +190,7 @@ class Policy(Page):
         return{
             'INIT': 10,
             'END': 10+len(Constants.POL4_QUESTIONS),
-            'L4_CHOICES': [i[1] for i in GlobalConstants.L4_CHOICES]
+            'L4_CHOICES': [i[1] for i in GlobalConstants.L4_CHOICES2]
         }
 
 

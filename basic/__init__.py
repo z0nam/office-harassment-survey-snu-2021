@@ -30,8 +30,8 @@ class Player(BasePlayer):
         label="성별",
         widget=widgets.RadioSelect,
         choices=[
-            [1, "여"],
-            [2, "남"],
+            [1, "여성"],
+            [2, "남성"],
         ]
     )
 
@@ -70,11 +70,11 @@ class Player(BasePlayer):
         label="업종",
         widget=widgets.RadioSelect,
         choices=[
-            [1, "증권 "],
+            [1, "여수신"],
             [2, "생명보험 "],
             [3, "손해보험 "],
-            [4, "여수신 "],
-            [5, "직할/일반사무 "],
+            [4, "직할/일반사무"],
+            [5, "공공기관"],
             [6, "협동조합 "],
             [7, "기타(직접입력)"],
         ]

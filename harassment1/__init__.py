@@ -42,10 +42,10 @@ def make_field_har1_seen(index):
 
 def make_field_har1_7(order):
     return models.IntegerField(
-        label="귀하가 피해 이후 개인적으로 감내하거나 적극적인 조치를 취하지 않은 이유는 무엇입니까? (%d순위)" % order,
+        label="귀하가 피해 이후 개인적으로 감내하거나 적극적인 조치를 취하지 않은 이유는 무엇입니까?",
         widget=widgets.RadioSelect,
         choices=[
-            [1, "① 문제를 제기할만큼 심각한 것은 아거나 일상에서 흔한 일이라서"],
+            [1, "① 문제를 제기할만큼 심각한 것은 아니거나 일상에서 흔한 일이라서"],
             [2, "② 나만 이상한 사람, 분란을 일으킨 사람으로 여겨질 것 같아서"],
             [3, "③ 업무능력 부족, 실수 등 나에게 책임이 있다고 생각해서"],
             [4, "④ 직장 내에서 피해 사실이 공개될까봐"],
@@ -59,7 +59,7 @@ def make_field_har1_7(order):
 
 def make_field_har1_13(order):
     return models.IntegerField(
-        label="귀하가 경험한 위 피해가 발생하게 된 가장 주된 원인은 무엇이라 생각합니까?(%d순위)" % order,
+        label="귀하가 경험한 위 피해가 발생하게 된 가장 주된 원인은 무엇이라 생각합니까? 순서대로 두가지를 뽑아 주십시오.",
         widget=widgets.RadioSelect,
         choices=[
             [1, "① 직장의 경영정책(인력감축, 고객서비스정책 등)"],
@@ -76,7 +76,7 @@ def make_field_har1_13(order):
 
 def make_field_har1s_8(order):
     return models.IntegerField(
-        label="위 상황을 목격한 후 피해자를 돕거나 직장에 적극적인 조치를 취하지 않은 이유는 무엇입니까?(%d순위)" %  order,
+        label="위 상황을 목격한 후 피해자를 돕거나 직장에 적극적인 조치를 취하지 않은 이유는 무엇입니까?",
         widget=widgets.RadioSelect,
         choices=[
             [1, "① 문제를 제기할만큼 심각한 것은 아니거나 일상에서 흔한 일이라 생각해서 "],
@@ -93,7 +93,7 @@ def make_field_har1s_8(order):
 
 def make_field_har1s_12(order):
     return models.IntegerField(
-        label="귀하가 목격한 상황이 발생하게 된 가장 주된 원인은 무엇이라 생각합니까?(%d순위)" % order,
+        label="귀하가 목격한 상황이 발생하게 된 가장 주된 원인은 무엇이라 생각합니까?",
         widget=widgets.RadioSelect,
         choices=[
             [1, "① 직장의 경영정책(인력감축, 고객서비스정책 등)"],
@@ -459,37 +459,37 @@ class Player(BasePlayer):
     )
 
     har1_11_6 = models.BooleanField(
-        label="⑥회사가 인사상 불이익 처우를 암시하며 사건을 축소 또는 은폐하려 함",
+        label="⑥내 조력자에게 해고, 징계, 고용, 업무상 불이익 등을 주거나 끼어들지 말라고 회유, 강요하는 등 괴롭힘이 가해짐",
         widget=widgets.CheckboxInput,
         blank=True,
     )
 
     har1_11_7 = models.BooleanField(
-        label="⑦회사가 가해자와의 합의를 종용함",
+        label="⑦회사가 인사상 불이익 처우를 암시하며 사건을 축소 또는 은폐하려 함",
         widget=widgets.CheckboxInput,
         blank=True,
     )
 
     har1_11_8 = models.BooleanField(
-        label="⑧과도한 업무 혹은 다른 업무를 부여받거나 업무를 부여받지 못함",
+        label="⑧회사가 가해자와의 합의를 종용함",
         widget=widgets.CheckboxInput,
         blank=True,
     )
 
     har1_11_9 = models.BooleanField(
-        label="⑨회사가 가해자가 아닌 나만 부서이동을 시킴",
+        label="⑨과도한 업무 혹은 다른 업무를 부여받거나 업무를 부여받지 못함",
         widget=widgets.CheckboxInput,
         blank=True,
     )
 
     har1_11_10 = models.BooleanField(
-        label="⑩근무평가, 승진, 근로계약 갱신 거절 등 인사상 부당한 대우나 불이익을 받음",
+        label="⑩회사가 가해자가 아닌 나만 부서이동을 시킴",
         widget=widgets.CheckboxInput,
         blank=True,
     )
 
     har1_11_11 = models.BooleanField(
-        label="⑪내 조력자에게 해고, 징계, 고용, 업무상 불이익 등을 주거나 끼어들지 말라고 회유, 강요하는 등 괴롭힘이 가해짐",
+        label="⑪근무평가, 승진, 근로계약 갱신 거절 등 인사상 부당한 대우나 불이익을 받음",
         widget=widgets.CheckboxInput,
         blank=True,
     )
@@ -539,13 +539,7 @@ class Player(BasePlayer):
     )
 
     har1_12_6 = models.BooleanField(
-        label="⑥ 이직을 고민하였다.",
-        widget=widgets.CheckboxInput,
-        blank=True,
-    )
-
-    har1_12_7 = models.BooleanField(
-        label="⑦ 특별한 영향은 없었다.",
+        label="⑥ 특별한 영향은 없었다.",
         widget=widgets.CheckboxInput,
         blank=True,
     )
@@ -772,6 +766,19 @@ class Experience(Page):
         'har1_seen_7',
         'har1_experienced_8',
         'har1_seen_8',
+    ]
+
+    @staticmethod
+    def vars_for_template(player):
+        return{
+            'INIT': 1,
+            'END': len(Experience.form_fields)/2,
+        }
+
+
+class Experience2(Page):
+    form_model = 'player'
+    form_fields = [
         'har1_experienced_9',
         'har1_seen_9',
         'har1_experienced_10',
@@ -784,6 +791,19 @@ class Experience(Page):
         'har1_seen_13',
         'har1_experienced_14',
         'har1_seen_14',
+    ]
+
+    @staticmethod
+    def vars_for_template(player):
+        return{
+            'INIT': 1,
+            'END': len(Experience2.form_fields)/2,
+        }
+
+
+class Experience3(Page):
+    form_model = 'player'
+    form_fields = [
         'har1_experienced_15',
         'har1_seen_15',
         'har1_experienced_16',
@@ -794,6 +814,19 @@ class Experience(Page):
         'har1_seen_18',
         'har1_experienced_19',
         'har1_seen_19',
+    ]
+
+    @staticmethod
+    def vars_for_template(player):
+        return{
+            'INIT': 1,
+            'END': len(Experience3.form_fields)/2,
+        }
+
+
+class Experience4(Page):
+    form_model = 'player'
+    form_fields = [
         'har1_experienced_20',
         'har1_seen_20',
         'har1_experienced_21',
@@ -802,6 +835,19 @@ class Experience(Page):
         'har1_seen_22',
         'har1_experienced_23',
         'har1_seen_23',
+    ]
+
+    @staticmethod
+    def vars_for_template(player):
+        return{
+            'INIT': 1,
+            'END': len(Experience4.form_fields)/2,
+        }
+
+
+class Experience5(Page):
+    form_model = 'player'
+    form_fields = [
         'har1_experienced_24',
         'har1_seen_24',
         'har1_experienced_25',
@@ -824,8 +870,9 @@ class Experience(Page):
     def vars_for_template(player):
         return{
             'INIT': 1,
-            'END': len(Constants.HAR1_QUESTIONS),
+            'END': len(Experience5.form_fields)/2,
         }
+
 
 
 class Har1(Page):
@@ -1016,10 +1063,10 @@ class Har1_2(Page):
     form_model='player'
     form_fields=[
         'har1_7_1st',
-        'har1_7_1st_op',
         'har1_7_2nd',
-        'har1_7_2nd_op',
         'har1_7_3rd',
+        'har1_7_1st_op',
+        'har1_7_2nd_op',
         'har1_7_3rd_op',
     ]
 
@@ -1142,19 +1189,45 @@ class Har1_6(Page):
         'har1_11_4',
         'har1_11_5',
         'har1_11_6',
+    ]
+
+    def is_displayed(player):
+        if player.participant.HAR1_CASE == "PASS":
+            return False
+        if not player.participant.HAR1_EXP_GOGO:
+            return False
+        else:
+            return True
+
+
+class Har1_6_2(Page):
+    form_model = 'player'
+    form_fields = [
         'har1_11_7',
         'har1_11_8',
         'har1_11_9',
         'har1_11_10',
         'har1_11_11',
+    ]
 
+    def is_displayed(player):
+        if player.participant.HAR1_CASE == "PASS":
+            return False
+        if not player.participant.HAR1_EXP_GOGO:
+            return False
+        else:
+            return True
+
+
+class Har1_7(Page):
+    form_model = 'player'
+    form_fields = [
         'har1_12_1',
         'har1_12_2',
         'har1_12_3',
         'har1_12_4',
         'har1_12_5',
         'har1_12_6',
-        'har1_12_7',
 
         'har1_13_1st',
         'har1_13_2nd',
@@ -1317,6 +1390,10 @@ class Har1s_7(Page):
 
 page_sequence = [
     Experience,
+    Experience2,
+    Experience3,
+    Experience4,
+    Experience5,
     Har1,
     Har1_1,
     Har1_1_plus,
@@ -1325,6 +1402,8 @@ page_sequence = [
     Har1_4,
     Har1_5,
     Har1_6,
+    Har1_6_2,
+    Har1_7,
     Har1s,
     Har1s_2,
     Har1s_3,

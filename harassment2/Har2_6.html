@@ -1,6 +1,13 @@
 {{ extends "global/Page.html" }}
 
 {{ block title }}
+<div class="progress">
+    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+         aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"
+         style="width:78%">
+      78%
+    </div>
+</div>
     피해경험
 {{ endblock }}
 {{ block content }}
@@ -14,7 +21,7 @@
                 'id_har2_14_1st',
                 'id_har2_14_2nd',
             ],
-            8
+            9
         );
     })
 </script>
@@ -50,12 +57,30 @@
             {{ formfield 'har2_13_7' }}
     </div>
 
-    <div class="alert border">
-        {{ formfield 'har2_14_1st' }}
-    </div>
+    <div class="center-align">
+        <table class="tableFixedHead table table-striped table-bordered">
+            <thead>
+            <tr>
+                <th class="bg-info">
+                    {{ form.har2_14_1st.label }}
+                </th>
+                <th class="bg-info">1순위</th>
+                <th class="bg-info">2순위</th>
+            </tr>
+            </thead>
+            <tbody>
+                {{ for choice in form.har2_14_1st }}
+                    <tr>
+                        <td>{{choice.label}}</td>
+                        <th id="id_har2_14_1st"><span><input name="har2_14_1st" id="id_har2_14_1st-{{forloop.counter}}"
+                                                             type="radio" value="{{forloop.counter}}"></span></th>
+                        <th id="id_har2_14_2nd"><span><input name="har2_14_2nd" id="id_har2_14_2nd-{{forloop.counter}}"
+                                                             type="radio" value="{{forloop.counter}}"></span></th>
+                    </tr>
+                {{ endfor }}
+            </tbody>
+        </table>
 
-    <div class="alert border">
-        {{ formfield 'har2_14_2nd' }}
     </div>
 
     {{ next_button }}

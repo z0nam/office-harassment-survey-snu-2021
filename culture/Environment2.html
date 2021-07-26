@@ -1,29 +1,22 @@
 {{ extends "global/Page.html" }}
 {{ block title }}
-  <div class="progress">
+<div class="progress">
     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-         aria-valuenow="5" aria-valuemin="0" aria-valuemax="100" style="width:5%">
-      5%
+         aria-valuenow="7" aria-valuemin="0" aria-valuemax="100"
+         style="width:7%">
+      7%
     </div>
-  </div>
-
-     직장문화에 대한 인식
+</div>
+     직장문화에 대한 평가
 {{ endblock }}
+
 {{ block content }}
-
-    <div class="alert-info border">
-        <h4>
-            이하에서는 귀하의 직장 경험에 대한 질문에 제시됩니다.
-            귀하의 직장이 본사(본점), 공장, 지사, 영업소, 출장소, 분점 등이 별도로 있는 경우,
-            귀하가 <u>출퇴근을 하고 있는 곳(혹은 일상적 업무 통제가 이뤄지는 곳)</u>을 기준으로
-            ‘직장’을 떠올려 주십시오.
-        </h4>
-
-    </div>
 
     <div class="alert border">
         <p>
-             귀하가 현재 다니는 직장의 분위기는 어디에 가깝습니까?
+             귀하가 다니고 있는 직장의 지난 3년간의 환경 변화에 관한 질문입니다.
+            직장 환경이 어떻게 변했다고 생각하십니까?
+            (근무경력이 3년 미만이면 근무 기간을 기준으로 답해 주세요.)
         </p>
     </div>
 
@@ -38,13 +31,13 @@
         </tr>
         </thead>
         <tbody>
-            {{ for culture_question in form }}
-                {{ if forloop.counter >= CULTURE_INIT and forloop.counter <= CULTURE_END}}
+            {{ for environment_question in form }}
+                {{ if forloop.counter >= ENV_INIT and forloop.counter <= ENV_END}}
                 <tr>
                     <th>
-                        {{ culture_question.label }}
+                        {{ environment_question.label }}
                     </th>
-                    {{ for choice in culture_question }}
+                    {{ for choice in environment_question }}
                         <td class="text-center align-middle">
                             {{ choice }}
                         </td>
@@ -54,8 +47,10 @@
             {{ endfor }}
         </tbody>
     </table>
+
     <button class="btn btn-primary btn-large active">
         모든 질문에 답하신 뒤에 클릭해주세요
     </button>
-
 {{ endblock }}
+
+

@@ -64,6 +64,7 @@ class Player(BasePlayer):
     env_7 = make_field_environment(7)
     env_8 = make_field_environment(8)
     env_9 = make_field_environment(9)
+    env_10 = make_field_environment(10)
     
 
 
@@ -99,18 +100,34 @@ class Environment(Page):
         'env_4',
         'env_5',
         'env_6',
-        'env_7',
-        'env_8',
-        'env_9',
     ]
 
     @staticmethod
     def vars_for_template(player):
         return{
             'ENV_INIT': 1,
-            'ENV_END': len(Constants.ENVIRONMENT_QUESTIONS),
+            'ENV_END': 6,
             'L4_CHOICES': [i[1] for i in Constants.L4_CHOICES],
         }
 
 
-page_sequence = [Culture, Environment]
+class Environment2(Page):
+    form_model = 'player'
+    form_fields = [
+        'env_7',
+        'env_8',
+        'env_9',
+        'env_10',
+    ]
+
+    @staticmethod
+    def vars_for_template(player):
+        return{
+            'ENV_INIT': 1,
+            'ENV_END': 4,
+            'L4_CHOICES': [i[1] for i in Constants.L4_CHOICES],
+        }
+
+
+
+page_sequence = [Culture, Environment, Environment2]

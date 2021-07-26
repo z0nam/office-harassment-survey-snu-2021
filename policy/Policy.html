@@ -1,5 +1,12 @@
 {{ extends "global/Page.html" }}
 {{ block title }}
+<div class="progress">
+    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+         aria-valuenow="96" aria-valuemin="0" aria-valuemax="100"
+         style="width:96%">
+      96%
+    </div>
+</div>
      관련 제도 운용 실태와 정책 수요
 {{ endblock }}
 
@@ -13,11 +20,11 @@
                 'id_pol5_2nd',
                 'id_pol5_3rd',
             ],
-            11,
+            12,
         );
-        op_checker("id_pol5_1st-11", "id_pol5_1st_op");
-        op_checker("id_pol5_2nd-11", "id_pol5_2nd_op");
-        op_checker("id_pol5_3rd-11", "id_pol5_3rd_op");
+        op_checker("id_pol5_1st-12", "id_pol5_1st_op");
+        op_checker("id_pol5_2nd-12", "id_pol5_2nd_op");
+        op_checker("id_pol5_3rd-12", "id_pol5_3rd_op");
     })
 </script>
 
@@ -75,13 +82,32 @@
         </table>
     </div>
 
-    <div class="alert border">
-        {{ formfield 'pol5_1st' }}
-        {{ formfield 'pol5_1st_op' }}
-        {{ formfield 'pol5_2nd' }}
-        {{ formfield 'pol5_2nd_op' }}
-        {{ formfield 'pol5_3rd' }}
-        {{ formfield 'pol5_3rd_op' }}
+    <div class="center-align">
+        <table class="tableFixedHead table table-striped table-bordered">
+            <thead>
+            <tr>
+                <th class="bg-info">
+                    {{ form.pol5_1st.label }}
+                </th>
+                <th class="bg-info">1순위</th>
+                <th class="bg-info">2순위</th>
+                <th class="bg-info">3순위</th>
+            </tr>
+            </thead>
+            <tbody>
+                {{ for choice in form.pol5_1st }}
+                    <tr>
+                        <td>{{choice.label}}</td>
+                        <th id="id_pol5_1st"><span><input name="pol5_1st" id="id_pol5_1st-{{forloop.counter}}" type="radio" value="{{forloop.counter}}"></span></th>
+                        <th id="id_pol5_2nd"><span><input name="pol5_2nd" id="id_pol5_2nd-{{forloop.counter}}" type="radio" value="{{forloop.counter}}"></span></th>
+                        <th id="id_pol5_3rd"><span><input name="pol5_3rd" id="id_pol5_3rd-{{forloop.counter}}" type="radio" value="{{forloop.counter}}"></span></th>
+                    </tr>
+                {{ endfor }}
+                <tr><td>{{ formfield 'pol5_1st_op' label="1순위(직접입력)"}}</td><th></th><th></th><th></th></tr>
+                <tr><td>{{ formfield 'pol5_2nd_op' label="2순위(직접입력)"}}</td><th></th><th></th><th></th></tr>
+                <tr><td>{{ formfield 'pol5_3rd_op' label="3순위(직접입력)"}}</td><th></th><th></th><th></th></tr>
+            </tbody>
+        </table>
     </div>
 
     <div class="alert border">
