@@ -130,6 +130,8 @@ class Player(BasePlayer):
         ]
     )
 
+    ## 여기 분리.
+
     pol4_1 = make_field_pol4(1)
     pol4_2 = make_field_pol4(2)
     pol4_3 = make_field_pol4(3)
@@ -171,6 +173,20 @@ class Policy(Page):
         'pol1_7',
         'pol2',
         'pol3',
+    ]
+
+    @staticmethod
+    def vars_for_template(player):
+        return{
+            'INIT': 10,
+            'END': 10+len(Constants.POL4_QUESTIONS),
+            'L4_CHOICES': [i[1] for i in GlobalConstants.L4_CHOICES2]
+        }
+
+
+class Policy2(Page):
+    form_model = 'player'
+    form_fields = [
         'pol4_1',
         'pol4_2',
         'pol4_3',
@@ -188,10 +204,9 @@ class Policy(Page):
     @staticmethod
     def vars_for_template(player):
         return{
-            'INIT': 10,
-            'END': 10+len(Constants.POL4_QUESTIONS),
+            'INIT': 1,
+            'END': 1+len(Constants.POL4_QUESTIONS),
             'L4_CHOICES': [i[1] for i in GlobalConstants.L4_CHOICES2]
         }
 
-
-page_sequence = [Policy]
+page_sequence = [Policy, Policy2]

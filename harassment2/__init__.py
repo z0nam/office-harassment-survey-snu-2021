@@ -415,55 +415,55 @@ class Player(BasePlayer):
     )
 
     har2_12_3 = models.BooleanField(
-        label="③사람들이 나를 피하거나 따돌림",
+        label="③ 사람들이 나를 피하거나 따돌림",
         widget=widgets.CheckboxInput,
         blank=True,
     )
 
     har2_12_4 = models.BooleanField(
-        label="④다른 유사사건이 생기거나 논의될 때마다 나의 피해 사례를 굳이 반복해 거론함",
+        label="④ 다른 유사사건이 생기거나 논의될 때마다 나의 피해 사례를 굳이 반복해 거론함",
         widget=widgets.CheckboxInput,
         blank=True,
     )
 
     har2_12_5 = models.BooleanField(
-        label="⑤분란을 만들지 말고 조용히 넘어가기를 강요받거나 참으라는 얘기를 들음",
+        label="⑤ 분란을 만들지 말고 조용히 넘어가기를 강요받거나 참으라는 얘기를 들음",
         widget=widgets.CheckboxInput,
         blank=True,
     )
 
     har2_12_6 = models.BooleanField(
-        label="⑥회사가 인사상 불이익 처우를 암시하며 사건을 축소 또는 은폐하려 함",
+        label="⑥ 회사가 인사상 불이익 처우를 암시하며 사건을 축소 또는 은폐하려 함",
         widget=widgets.CheckboxInput,
         blank=True,
     )
 
     har2_12_7 = models.BooleanField(
-        label="⑦회사가 가해자와의 합의를 종용함",
+        label="⑦ 회사가 가해자와의 합의를 종용함",
         widget=widgets.CheckboxInput,
         blank=True,
     )
 
     har2_12_8 = models.BooleanField(
-        label="⑧과도한 업무 혹은 다른 업무를 부여받거나 업무를 부여받지 못함",
+        label="⑧ 과도한 업무 혹은 다른 업무를 부여받거나 업무를 부여받지 못함",
         widget=widgets.CheckboxInput,
         blank=True,
     )
 
     har2_12_9 = models.BooleanField(
-        label="⑨회사가 가해자가 아닌 나만 부서이동을 시킴",
+        label="⑨ 회사가 가해자가 아닌 나만 부서이동을 시킴",
         widget=widgets.CheckboxInput,
         blank=True,
     )
 
     har2_12_10 = models.BooleanField(
-        label="⑩근무평가, 승진, 근로계약 갱신 거절 등 인사상 부당한 대우나 불이익을 받음",
+        label="⑩ 근무평가, 승진, 근로계약 갱신 거절 등 인사상 부당한 대우나 불이익을 받음",
         widget=widgets.CheckboxInput,
         blank=True,
     )
 
     har2_12_11 = models.BooleanField(
-        label="⑪내 조력자에게 해고, 징계, 고용, 업무상 불이익 등을 주거나 끼어들지 말라고 회유, 강요하는 등 괴롭힘이 가해짐",
+        label="⑪ 내 조력자에게 해고, 징계, 고용, 업무상 불이익 등을 주거나 끼어들지 말라고 회유, 강요하는 등 괴롭힘이 가해짐",
         widget=widgets.CheckboxInput,
         blank=True,
     )
@@ -532,10 +532,10 @@ class Player(BasePlayer):
         label="응답하신 행위는 누가(가해자)가 누구에게(피해자) 한 것이었습니까? 여럿인 경우 주된 가해자와 피해자의 관계를 기준으로 응답해주십시오.",
         widget=widgets.RadioSelect,
         choices=[
-            [1, "①상사가 부하직원에게"],
-            [2, "②동료끼리"],
-            [3, "③부하직원이 상사에게"],
-            [4, "④가해자가 누구인지 모름"],
+            [1, "① 상사가 부하직원에게"],
+            [2, "② 동료끼리"],
+            [3, "③ 부하직원이 상사에게"],
+            [4, "④ 가해자가 누구인지 모름"],
         ]
     )
 
