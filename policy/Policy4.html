@@ -1,0 +1,45 @@
+{{ extends "global/Page.html" }}
+{{ block title }}
+<div class="progress">
+    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+         aria-valuenow="97" aria-valuemin="0" aria-valuemax="100"
+         style="width:97%">
+      97%
+    </div>
+</div>
+     관련 제도 운용 실태와 정책 수요
+{{ endblock }}
+
+{{ block app_scripts }}
+
+<script>
+    $(document).ready(function(){
+        hide_others(
+            [
+                'id_pol5_1st',
+                'id_pol5_2nd',
+                'id_pol5_3rd',
+            ],
+            12,
+        );
+        op_checker("id_pol5_1st-12", "id_pol5_1st_op");
+        op_checker("id_pol5_1st-12", "id_pol5_1st_op_name");
+        op_checker("id_pol5_2nd-12", "id_pol5_2nd_op");
+        op_checker("id_pol5_2nd-12", "id_pol5_2nd_op_name");
+        op_checker("id_pol5_3rd-12", "id_pol5_3rd_op");
+        op_checker("id_pol5_3rd-12", "id_pol5_3rd_op_name");
+    })
+</script>
+
+{{ endblock }}
+
+
+{{ block content }}
+
+    <div class="alert border">
+        {{ formfield 'pol6' }}
+    </div>
+
+    {{ next_button }}
+
+{{ endblock }}

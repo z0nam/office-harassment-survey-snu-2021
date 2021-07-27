@@ -192,12 +192,40 @@ class Policy2(Page):
         'pol4_3',
         'pol4_4',
         'pol4_5',
+    ]
+
+    @staticmethod
+    def vars_for_template(player):
+        return{
+            'INIT': 1,
+            'END': 1+len(Constants.POL4_QUESTIONS),
+            'L4_CHOICES': [i[1] for i in GlobalConstants.L4_CHOICES2]
+        }
+
+
+class Policy3(Page):
+    form_model = 'player'
+    form_fields = [
         'pol5_1st',
         'pol5_1st_op',
         'pol5_2nd',
         'pol5_2nd_op',
         'pol5_3rd',
         'pol5_3rd_op',
+    ]
+
+    @staticmethod
+    def vars_for_template(player):
+        return{
+            'INIT': 1,
+            'END': 1+len(Constants.POL4_QUESTIONS),
+            'L4_CHOICES': [i[1] for i in GlobalConstants.L4_CHOICES2]
+        }
+
+
+class Policy4(Page):
+    form_model = 'player'
+    form_fields = [
         'pol6',
     ]
 
@@ -209,4 +237,5 @@ class Policy2(Page):
             'L4_CHOICES': [i[1] for i in GlobalConstants.L4_CHOICES2]
         }
 
-page_sequence = [Policy, Policy2]
+
+page_sequence = [Policy, Policy2, Policy3, Policy4]
