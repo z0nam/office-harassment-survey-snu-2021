@@ -91,36 +91,18 @@ var hide_others = function hide_others(tag_list, num_choices_to_hide) {
   });
 };
 
-var hide_others2 = function hide_others(tag_list, num_choices_to_hide) {
-  $('input:radio').change(function (e) {
-    console.log("hide_others(): started for "+tag_list);
-
-    var selected_id = $(this).parent().attr('id');
-    console.log("selected_id="+selected_id);
-
-    var index_of_selected_id = tag_list.indexOf(selected_id);
-    console.log("index_of_selected_id="+index_of_selected_id);
-
-    if (index_of_selected_id >= 0) {
-      var _loop = function _loop(i) {
-        console.log("checking order "+i+"...");
-        tag_list.forEach(function (tag, index, array) {
-          if (is_unchecked_all(tag_list, i)) {
-            $(radio_tag_maker(tag, i)).attr("disabled", false);
-          } else {
-            if ($(radio_tag_maker(tag, i)).is(":checked")) {
-              $(radio_tag_maker(tag, i)).attr("disabled", false);
-            } else {
-              $(radio_tag_maker(tag, i)).attr("disabled", true);
-            }
-          }
-        });
-      };
-
-      // console.log("loop entered:");
-      for (var i = 0; i < num_choices_to_hide; i++) {
-        _loop(i);
-      }
+var hide_other_check = function hide_other_check(origin_tag, target_tag) {
+  $(':checkbox').change(function (e) {
+    // console.log("hide_others_check(): started for origin:"+origin_tag+", target:"+target_tag);
+    var origin_tag_id = "#"+origin_tag;
+    var target_tag_id = "#"+target_tag;
+    if ($(origin_tag_id).is(":checked")){
+      // console.log("wow: origin was checked!!!");
+      $(target_tag_id).prop("checked", false);
+      $(target_tag_id).attr("disabled", true);
+    } else {
+      $(target_tag_id).removeAttr("disabled");
+      return;
     }
   });
 };

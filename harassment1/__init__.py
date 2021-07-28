@@ -28,17 +28,19 @@ class Group(BaseGroup):
 
 def make_field_har1_experienced(index):
     return models.BooleanField(
-        label=Constants.HAR1_QUESTIONS[index-1],
+        label=Constants.HAR1_QUESTIONS[index - 1],
         widget=widgets.CheckboxInput,
         blank=True,
     )
 
+
 def make_field_har1_seen(index):
     return models.BooleanField(
-        label=Constants.HAR1_QUESTIONS[index-1],
+        label=Constants.HAR1_QUESTIONS[index - 1],
         widget=widgets.CheckboxInput,
         blank=True,
     )
+
 
 def make_field_har1_7(order):
     return models.IntegerField(
@@ -57,6 +59,7 @@ def make_field_har1_7(order):
         ]
     )
 
+
 def make_field_har1_13(order):
     return models.IntegerField(
         label="귀하가 경험한 위 피해가 발생하게 된 가장 주된 원인은 무엇이라 생각합니까? 순서대로 두가지를 뽑아 주십시오.",
@@ -70,9 +73,10 @@ def make_field_har1_13(order):
             [6, "⑥ 고용 불안정"],
             [7, "⑦ 가해자 개인의 인성 문제"],
             [8, "⑧ 내 잘못"],
-            [9, "⑨ 기타"],
+            [9, "⑨ 기타 (직접입력)"],
         ]
     )
+
 
 def make_field_har1s_8(order):
     return models.IntegerField(
@@ -91,6 +95,7 @@ def make_field_har1s_8(order):
         ]
     )
 
+
 def make_field_har1s_12(order):
     return models.IntegerField(
         label="귀하가 목격한 상황이 발생하게 된 가장 주된 원인은 무엇이라 생각합니까?",
@@ -104,7 +109,7 @@ def make_field_har1s_12(order):
             [6, "⑥ 고용 불안정"],
             [7, "⑦ 가해자 개인의 인성 문제"],
             [8, "⑧ 피해자 잘못"],
-            [9, "⑨ 기타"],
+            [9, "⑨ 기타 (직접입력)"],
         ]
     )
 
@@ -193,7 +198,7 @@ class Player(BasePlayer):
         ]
     )
 
-    #Har1_1
+    # Har1_1
 
     har1_4 = models.IntegerField(
         label="그 가해자의 성별은 무엇입니까? 여럿인 경우 주된 가해자를 기준으로 응답해주십시오",
@@ -201,7 +206,7 @@ class Player(BasePlayer):
         choices=GlobalConstants.GENDER_CHOICES,
     )
 
-    #Har1_1_plus
+    # Har1_1_plus
 
     har1_5_1 = models.BooleanField(
         widget=widgets.CheckboxInput,
@@ -298,26 +303,7 @@ class Player(BasePlayer):
         label="",
     )
 
-
     # HAR1_3
-
-    # har1_8 = models.IntegerField(
-    #     label="이후 직장에서는 다음 중 어떠한 조치들이 이뤄졌습니까? 다음 중 해당하는 것을 모두 골라주십시오.",
-    #     choices=[
-    #         [1, "① 아무런 조치가 없었다"],
-    #         [2, "② 행위자가 사과하도록 했다"],
-    #         [3, "③행위자에게 인사조치가 있었다"],
-    #         [4, "④ 피해자인 나와 행위자를 분리했다"],
-    #         [5, "⑤ 예방 교육이나 지침 안내 등 해당사안과 관련해 직장 교육을 했다."],
-    #         [6, "⑥ 피해에 대한 금전적 보상이 이루어지도록 했다"],
-    #         [7, "⑦ 상담이나 치료, 유급 휴직 등 지원을 해주었다"],
-    #         [8, "⑧ 조사 결과를 내게 알려주었다"],
-    #         [9, "⑨ 사건 종결과 처리를 미루었다"],
-    #         [10, "⑩ 기타(직접입력)"],
-    #     ],
-    #     widget=widgets.RadioSelect,
-    # )
-
 
     har1_8_1 = models.BooleanField(
         label="① 아무런 조치가 없었다",
@@ -378,9 +364,7 @@ class Player(BasePlayer):
         blank=True,
     )
 
-
-
-    #Har1_4
+    # Har1_4
 
     har1_9 = models.IntegerField(
         label="피해 상황은 이후 귀하가 원치 않았던 직장 구성원들에게까지 알려지게 되었습니까? ",
@@ -388,8 +372,7 @@ class Player(BasePlayer):
         choices=GlobalConstants.YNU_CHOICES,
     )
 
-    #Har1_5
-
+    # Har1_5
 
     har1_10_1 = models.BooleanField(
         label="① 피해가 남들이 보는 앞에서 혹은 행정절차(성과평가, 승진, 휴가 등)를 통해 공공연히 이뤄져서",
@@ -426,7 +409,7 @@ class Player(BasePlayer):
         blank=True,
     )
 
-    #Har1_6
+    # Har1_6
 
     har1_11_1 = models.BooleanField(
         label="① 직장에 문제제기하거나 분란을 만들었다는 이유로 비난을 받음",
@@ -527,35 +510,35 @@ class Player(BasePlayer):
     )
 
     har1_12_4 = models.BooleanField(
-        label="④ 이직을 고민했다. ",
+        label="④ 분노나 불안감, 우울, 무력감, 감정조절 및 수면에 어려움을 느꼈다.",
         widget=widgets.CheckboxInput,
         blank=True,
     )
 
     har1_12_5 = models.BooleanField(
-        label="⑤ 분노나 불안감, 우울, 무력감, 감정조절 및 수면에 어려움을 느꼈다.",
-        widget=widgets.CheckboxInput,
-        blank=True,
-    )
-
-    har1_12_6 = models.BooleanField(
-        label="⑥ 특별한 영향은 없었다.",
+        label="⑤ 특별한 영향은 없었다.",
         widget=widgets.CheckboxInput,
         blank=True,
     )
 
     har1_13_1st = make_field_har1_13(1)
     har1_13_2nd = make_field_har1_13(2)
+    har1_13_1st_op = models.LongStringField(
+        label="",
+        blank=True,
+    )
+    har1_13_2nd_op = models.LongStringField(
+        label="",
+        blank=True,
+    )
 
-
-    #Har1s.html
+    # Har1s.html
 
     har1_seen_critical = models.IntegerField(
         min=1,
         max=len(Constants.HAR1_QUESTIONS),
         widget=widgets.RadioSelect,
     )
-
 
     har1s_3 = models.IntegerField(
         label="응답하신 행위는 누가(가해자)가 누구에게(피해자) 한 것이었습니까? 여럿인 경우 주된 가해자와 피해자의 관계를 기준으로 응답해주십시오.",
@@ -649,14 +632,13 @@ class Player(BasePlayer):
         blank=True,
     )
 
-
-    #Har1s_4
+    # Har1s_4
 
     har1s_8_1st = make_field_har1s_8(1)
     har1s_8_2nd = make_field_har1s_8(2)
     har1s_8_3rd = make_field_har1s_8(3)
 
-    #Har1s_5
+    # Har1s_5
 
     har1s_9 = models.IntegerField(
         label="피해 상황은 이후 귀하가 원치 않았던 직장 구성원들에게까지 알려지게 되었습니까? ",
@@ -664,7 +646,7 @@ class Player(BasePlayer):
         choices=GlobalConstants.YNU_CHOICES,
     )
 
-    #Har1s_6
+    # Har1s_6
 
     har1s_10_1 = models.BooleanField(
         label="① 피해가 남들이 보는 앞에서 혹은 행정절차(성과평가, 승진, 휴가 등)를 통해 공공연히 이뤄져서",
@@ -741,11 +723,17 @@ class Player(BasePlayer):
 
     har1s_12_1st = make_field_har1s_12(1)
     har1s_12_2nd = make_field_har1s_12(2)
+    har1s_12_1st_op = models.LongStringField(
+        label="",
+        blank=True,
+    )
+    har1s_12_2nd_op = models.LongStringField(
+        label="",
+        blank=True,
+    )
 
 
-
-
-############################################# PAGES ######################################################
+################################## PAGES ######################################################
 
 class Experience(Page):
     form_model = 'player'
@@ -770,9 +758,9 @@ class Experience(Page):
 
     @staticmethod
     def vars_for_template(player):
-        return{
+        return {
             'INIT': 1,
-            'END': len(Experience.form_fields)/2,
+            'END': len(Experience.form_fields) / 2,
         }
 
 
@@ -795,9 +783,9 @@ class Experience2(Page):
 
     @staticmethod
     def vars_for_template(player):
-        return{
+        return {
             'INIT': 1,
-            'END': len(Experience2.form_fields)/2,
+            'END': len(Experience2.form_fields) / 2,
         }
 
 
@@ -818,9 +806,9 @@ class Experience3(Page):
 
     @staticmethod
     def vars_for_template(player):
-        return{
+        return {
             'INIT': 1,
-            'END': len(Experience3.form_fields)/2,
+            'END': len(Experience3.form_fields) / 2,
         }
 
 
@@ -839,9 +827,9 @@ class Experience4(Page):
 
     @staticmethod
     def vars_for_template(player):
-        return{
+        return {
             'INIT': 1,
-            'END': len(Experience4.form_fields)/2,
+            'END': len(Experience4.form_fields) / 2,
         }
 
 
@@ -868,11 +856,10 @@ class Experience5(Page):
 
     @staticmethod
     def vars_for_template(player):
-        return{
+        return {
             'INIT': 1,
-            'END': len(Experience5.form_fields)/2,
+            'END': len(Experience5.form_fields) / 2,
         }
-
 
 
 class Har1(Page):
@@ -884,7 +871,7 @@ class Har1(Page):
 
     @staticmethod
     def vars_for_template(player):
-        return{
+        return {
             'CASE': player.participant.HAR1_CASE,
             'EXPERIENCED_INDICES': player.participant.HAR1_EXPERIENCED_INDICES,
             'EXPERIENCED_LIST': player.participant.HAR1_EXPERIENCED_LIST,
@@ -965,8 +952,10 @@ class Har1(Page):
             player.har1_seen_31,
         ]
 
-        player.participant.HAR1_EXPERIENCED_LIST = [[i+1, Constants.HAR1_QUESTIONS[i]] for i, value in enumerate(player.participant.HAR1_EXPERIENCED_INDICES) if value]
-        player.participant.HAR1_SEEN_LIST = [[i+1, Constants.HAR1_QUESTIONS[i]] for i, value in enumerate(player.participant.HAR1_SEEN_INDICES) if value]
+        player.participant.HAR1_EXPERIENCED_LIST = [[i + 1, Constants.HAR1_QUESTIONS[i]] for i, value in
+                                                    enumerate(player.participant.HAR1_EXPERIENCED_INDICES) if value]
+        player.participant.HAR1_SEEN_LIST = [[i + 1, Constants.HAR1_QUESTIONS[i]] for i, value in
+                                             enumerate(player.participant.HAR1_SEEN_INDICES) if value]
 
         total_number_of_experienced = sum(player.participant.HAR1_EXPERIENCED_INDICES)
         total_number_of_seen = sum(player.participant.HAR1_SEEN_INDICES)
@@ -1016,8 +1005,8 @@ def har1_seen_critical_choices(player):
 
 
 class Har1_1(Page):
-    form_model='player'
-    form_fields=[
+    form_model = 'player'
+    form_fields = [
         'har1_4',
     ]
 
@@ -1033,8 +1022,8 @@ class Har1_1(Page):
 
 
 class Har1_1_plus(Page):
-    form_model='player'
-    form_fields=[
+    form_model = 'player'
+    form_fields = [
         'har1_5_1',
         'har1_5_2',
         'har1_6_1',
@@ -1060,8 +1049,8 @@ class Har1_1_plus(Page):
 
 
 class Har1_2(Page):
-    form_model='player'
-    form_fields=[
+    form_model = 'player'
+    form_fields = [
         'har1_7_1st',
         'har1_7_2nd',
         'har1_7_3rd',
@@ -1097,23 +1086,23 @@ class Har1_2(Page):
             player.har1_6_10,
         ]
         if player.har1_6_1 == True or (
-            player.har1_6_2 == False and
-            player.har1_6_5 == False and
-            player.har1_6_6 == False and
-            player.har1_6_7 == False and
-            player.har1_6_8 == False and
-            player.har1_6_9 == False and
-            player.har1_6_10 == False
+                player.har1_6_2 == False and
+                player.har1_6_5 == False and
+                player.har1_6_6 == False and
+                player.har1_6_7 == False and
+                player.har1_6_8 == False and
+                player.har1_6_9 == False and
+                player.har1_6_10 == False
         ):
             player.participant.HAR1_8 = False
             return True
         elif (
-            player.har1_6_5 == True or
-            player.har1_6_6 == True or
-            player.har1_6_7 == True or
-            player.har1_6_8 == True or
-            player.har1_6_9 == True or
-            player.har1_6_10 == True
+                player.har1_6_5 == True or
+                player.har1_6_6 == True or
+                player.har1_6_7 == True or
+                player.har1_6_8 == True or
+                player.har1_6_9 == True or
+                player.har1_6_10 == True
         ):
             player.participant.HAR1_8 = True
             return False
@@ -1147,8 +1136,8 @@ class Har1_3(Page):
 
 
 class Har1_4(Page):
-    form_model='player'
-    form_fields=[
+    form_model = 'player'
+    form_fields = [
         'har1_9',
     ]
 
@@ -1227,10 +1216,11 @@ class Har1_7(Page):
         'har1_12_3',
         'har1_12_4',
         'har1_12_5',
-        'har1_12_6',
 
         'har1_13_1st',
         'har1_13_2nd',
+        'har1_13_1st_op',
+        'har1_13_2nd_op',
     ]
 
     def is_displayed(player):
@@ -1377,6 +1367,8 @@ class Har1s_7(Page):
         'har1s_11_5',
         'har1s_12_1st',
         'har1s_12_2nd',
+        'har1s_12_1st_op',
+        'har1s_12_2nd_op',
     ]
 
     def is_displayed(player):

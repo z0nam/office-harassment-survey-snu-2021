@@ -67,7 +67,7 @@ def make_field_har2_14(order):
             [6, "⑥ 고용 불안정"],
             [7, "⑦ 가해자 개인의 인성 문제"],
             [8, "⑧ 내 잘못"],
-            [9, "⑨ 기타"],
+            [9, "⑨ 기타 (직접입력)"],
         ]
     )
 
@@ -103,7 +103,7 @@ def make_field_har2s_12(order):
             [6, "⑥ 고용 불안정"],
             [7, "⑦ 가해자 개인의 인성 문제"],
             [8, "⑧ 피해자 잘못"],
-            [9, "⑨ 기타"],
+            [9, "⑨ 기타 (직접입력)"],
         ]
     )
 
@@ -517,6 +517,14 @@ class Player(BasePlayer):
 
     har2_14_1st = make_field_har2_14(1)
     har2_14_2nd = make_field_har2_14(2)
+    har2_14_1st_op = models.LongStringField(
+        label="",
+        blank=True,
+    )
+    har2_14_2nd_op = models.LongStringField(
+        label="",
+        blank=True,
+    )
 
 
 
@@ -702,6 +710,14 @@ class Player(BasePlayer):
 
     har2s_12_1st = make_field_har2s_12(1)
     har2s_12_2nd = make_field_har2s_12(2)
+    har2s_12_1st_op = models.LongStringField(
+        label="",
+        blank=True,
+    )
+    har2s_12_2nd_op = models.LongStringField(
+        label="",
+        blank=True,
+    )
 
 
 
@@ -1053,6 +1069,8 @@ class Har2_6(Page):
 
         'har2_14_1st',
         'har2_14_2nd',
+        'har2_14_1st_op',
+        'har2_14_2nd_op',
     ]
 
     @staticmethod
@@ -1202,6 +1220,8 @@ class Har2s_7(Page):
         'har2s_11_5',
         'har2s_12_1st',
         'har2s_12_2nd',
+        'har2s_12_1st_op',
+        'har2s_12_2nd_op',
     ]
 
     @staticmethod
