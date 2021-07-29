@@ -490,28 +490,23 @@ class Player(BasePlayer):
     )
 
     har2_13_4 = models.BooleanField(
-        label="④ 이직을 고민했다. ",
+        label="④ 분노나 불안감, 우울, 무력감, 감정조절 및 수면에 어려움을 느꼈다. ",
         widget=widgets.CheckboxInput,
         blank=True,
     )
 
     har2_13_5 = models.BooleanField(
-        label="⑤ 분노나 불안감, 우울, 무력감, 감정조절 및 수면에 어려움을 느꼈다.",
+        label="⑤ 이직을 고민하였다.",
         widget=widgets.CheckboxInput,
         blank=True,
     )
 
     har2_13_6 = models.BooleanField(
-        label="⑥ 이직을 고민하였다.",
+        label="⑥ 특별한 영향은 없었다.",
         widget=widgets.CheckboxInput,
         blank=True,
     )
 
-    har2_13_7 = models.BooleanField(
-        label="⑦ 특별한 영향은 없었다.",
-        widget=widgets.CheckboxInput,
-        blank=True,
-    )
 
 # 귀하가 경험한 위 피해가 발생하게 된 가장 주된 원인은 무엇이라 생각합니까?
 
@@ -1065,7 +1060,6 @@ class Har2_6(Page):
         'har2_13_4',
         'har2_13_5',
         'har2_13_6',
-        'har2_13_7',
 
         'har2_14_1st',
         'har2_14_2nd',
