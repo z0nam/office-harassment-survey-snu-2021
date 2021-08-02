@@ -1,3 +1,5 @@
+{{ extends "global/Page.html" }}
+
 {{ block title }}
 <div class="progress">
     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
@@ -8,6 +10,25 @@
 </div>
     피해경험
 {{ endblock }}
+
+{{ block app_scripts }}
+
+<script>
+    $(document).ready(function(){
+        hide_other_check("id_har2_7_1", "id_har2_7_2");
+        // hide_other_check("id_har2_7_1", "id_har2_7_3");
+        // hide_other_check("id_har2_7_1", "id_har2_7_4");
+        hide_other_check("id_har2_7_1", "id_har2_7_5");
+        hide_other_check("id_har2_7_1", "id_har2_7_6");
+        hide_other_check("id_har2_7_1", "id_har2_7_7");
+        hide_other_check("id_har2_7_1", "id_har2_7_8");
+        hide_other_check("id_har2_7_1", "id_har2_7_9");
+        hide_other_check("id_har2_7_1", "id_har2_7_10");
+    })
+</script>
+
+{{ endblock }}
+
 
 {{ block content }}
 

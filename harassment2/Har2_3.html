@@ -11,6 +11,25 @@
     피해경험
 {{ endblock }}
 
+
+{{ block app_scripts }}
+
+<script>
+    $(document).ready(function(){
+        hide_other_check("id_har2_9_1", "id_har2_9_2");
+        hide_other_check("id_har2_9_1", "id_har2_9_3");
+        hide_other_check("id_har2_9_1", "id_har2_9_4");
+        hide_other_check("id_har2_9_1", "id_har2_9_5");
+        hide_other_check("id_har2_9_1", "id_har2_9_6");
+        hide_other_check("id_har2_9_1", "id_har2_9_7");
+        hide_other_check("id_har2_9_1", "id_har2_9_8");
+        hide_other_check("id_har2_9_1", "id_har2_9_9");
+    })
+</script>
+
+{{ endblock }}
+
+
 {{ block content }}
     <div class="alert border">
         <p>이후 직장에서는 다음 중 어떠한 조치들이 이뤄졌습니까? 다음 중 해당하는 것을 모두 골라주십시오.</p>
