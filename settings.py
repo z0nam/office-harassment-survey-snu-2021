@@ -135,10 +135,106 @@ SECRET_KEY = '4098553728246'
 ROOMS = [
     dict(
         name="fed",
-        display_name="연명용 설문지",
+        display_name="연맹용 설문지(일반)",
     ),
     dict(
         name="union",
-        display_name="노조용 설문지",
-    )
+        display_name="노조용 설문지(일반)",
+    ),
+    dict(
+        name="union1",
+        display_name="노조-신한카드지부(조합원수300명이상)",
+    ),
+    dict(
+        name="union2",
+        display_name="노조-서울신용보증재단지부(조합원수200명이상300명미만)",
+    ),
+    dict(
+        name="union3",
+        display_name="노조-경기신용보증재단지부(조합원수200명이상300명미만)",
+    ),
+    dict(
+        name="union4",
+        display_name="노조-AIA생명보험지부(조합원수300명이상)",
+    ),
+    dict(
+        name="union5",
+        display_name="노조-흥국생명지부(조합원수300명이상)",
+    ),
+    dict(
+        name="union6",
+        display_name="노조-IBK연금보험지부(조합원수100명미만)",
+    ),
+    dict(
+        name="union7",
+        display_name="노조-KDB생명지부(조합원수300명이상)",
+    ),
+    dict(
+        name="union8",
+        display_name="노조-코리안리재보험지부(조합원수300명이상)",
+    ),
+    dict(
+        name="union9",
+        display_name="노조-현대해상지부(조합원수300명이상)",
+    ),
+    dict(
+        name="union10",
+        display_name="노조-한화손해보험지부(조합원수300명이상)",
+    ),
+    dict(
+        name="union11",
+        display_name="노조-AXA손해보험지부(조합원수200명이상300명미만)",
+    ),
+    dict(
+        name="union12",
+        display_name="노조-교보증권지부(조합원수300명이상)",
+    ),
+    dict(
+        name="union13",
+        display_name="노조-SK증권지부(조합원수300명이상)",
+    ),
+    dict(
+        name="union14",
+        display_name="노조-신한아이타스지부(조합원수200명이상300명미만)",
+    ),
+    dict(
+        name="union15",
+        display_name="노조-SK매직지부(조합원수300명이상)",
+    ),
+    dict(
+        name="union16",
+        display_name="노조-한국신용카드결제지부(조합원수100명미만)",
+    ),
+    dict(
+        name="union17",
+        display_name="노조-통조림가공수협지부(조합원수100명미만)",
+    ),
+    dict(
+        name="union18",
+        display_name="노조-에이스손보콜센터지부(조합원수100명이상200명미만)",
+    ),
+    dict(
+        name="union19",
+        display_name="노조-기타미조직금융권콜센터노동자",
+    ),
+    dict(
+        name="fed1",
+        display_name="연맹-전국협동조합노동조합(조합원수300명이상)",
+    ),
+    dict(
+        name="fed2",
+        display_name="연맹-KIS정보통신노동조합(조합원수100명미만)",
+    ),
+    dict(
+        name="fed3",
+        display_name="연맹-티머니노동조합(100명이상200명미만)",
+    ),
+    dict(
+        name="fed4",
+        display_name="연맹-전국택시공제조합노동조합(조합원수100명이상200명미만)",
+    ),
+    dict(
+        name="fed5",
+        display_name="연맹-KCA손해사정노동조합(조합원수200명이상300명미만)",
+    ),
 ]
