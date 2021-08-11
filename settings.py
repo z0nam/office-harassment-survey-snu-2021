@@ -134,7 +134,11 @@ SECRET_KEY = '4098553728246'
 
 ROOMS = [
     dict(
-        name="test",
-        display_name="이어서하기테스트",
+        name="fed",
+        display_name="연명용 설문지",
+    ),
+    dict(
+        name="union",
+        display_name="노조용 설문지",
     )
 ]
