@@ -3,7 +3,7 @@ from os import environ
 SESSION_CONFIGS = [
     dict(
         name='survey_master',
-        display_name='사무금융노동자 직장 내 괴롭힘 설문조사',
+        display_name='사무금융노동자 직장 내 괴롭힘 설문조사(연맹)',
         app_sequence=[
             'introduction',
             'culture',
@@ -11,6 +11,21 @@ SESSION_CONFIGS = [
             'harassment2',
             'policy',
             'basic',
+            'ending',
+        ],
+        num_demo_participants=1,
+    ),
+    dict(
+        name='survey_master_union',
+        display_name='사무금융노동자 직장 내 괴롭힘 설문조사(노조)',
+        app_sequence=[
+            'introduction_union',
+            'culture',
+            'harassment1',
+            'harassment2',
+            'policy',
+            'basic',
+            'ending',
         ],
         num_demo_participants=1,
     ),
@@ -18,7 +33,7 @@ SESSION_CONFIGS = [
         name='culture',
         display_name='1. [전체] 직장문화에 대한 평가',
         app_sequence=[
-            'harassment1',
+            'culture',
         ],
         num_demo_participants=1,
     ),
@@ -51,6 +66,22 @@ SESSION_CONFIGS = [
         display_name='5. [전체]응답자 배경 정보',
         app_sequence=[
             'basic',
+        ],
+        num_demo_participants=1,
+    ),
+    dict(
+        name='interview_request',
+        display_name='인터뷰 요청 (조건부 - 미사용)',
+        app_sequence=[
+            'interview_request',
+        ],
+        num_demo_participants=1,
+    ),
+    dict(
+        name='ending',
+        display_name='감사합니다 표시화면',
+        app_sequence=[
+            'ending',
         ],
         num_demo_participants=1,
     ),

@@ -130,4 +130,8 @@ class Environment2(Page):
 
 
 
-page_sequence = [Culture, Environment, Environment2]
+page_sequence = [
+    Environment,
+    Environment2,
+    Culture,
+]

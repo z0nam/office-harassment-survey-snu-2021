@@ -184,8 +184,4 @@ class BasicInfo(Page):
     ]
 
 
-class ThankYou(Page):
-    pass
-
-
-page_sequence = [BasicInfo, ThankYou]
+page_sequence = [BasicInfo]
