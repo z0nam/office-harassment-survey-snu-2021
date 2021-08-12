@@ -447,6 +447,8 @@ class Player(BasePlayer):
         blank=True,
     )
 
+    #har1_6_2
+
     har1_11_7 = models.BooleanField(
         label="⑦ 회사가 인사상 불이익 처우를 암시하며 사건을 축소 또는 은폐하려 함",
         widget=widgets.CheckboxInput,
@@ -477,19 +479,7 @@ class Player(BasePlayer):
         blank=True,
     )
 
-    # har1_12 = models.IntegerField(
-    #     label="위 피해를 경험한 후 귀하에게는 다음과 같은 변화가 있었습니까? 다음 중 해당하는 것을 모두 골라주십시오",
-    #     widget=widgets.RadioSelect,
-    #     choices=[
-    #         [1, "① 근무 의욕, 업무 능력, 집중도가 떨어졌다."],
-    #         [2, "② 상급자나 직장에 대한 신뢰가 떨어졌다."],
-    #         [3, "③ 또 피해를 당할까봐 직장 동료들과 관계 맺는 것이 이전보다 조심스러워졌다. "],
-    #         [4, "④ 이직을 고민했다. "],
-    #         [5, "⑤ 분노나 불안감, 우울, 무력감, 감정조절 및 수면에 어려움을 느꼈다."],
-    #         [6, "⑥ 이직을 고민하였다."],
-    #         [7, "⑦ 특별한 영향은 없었다."],
-    #     ]
-    # )
+    #har1_7
 
     har1_12_1 = models.BooleanField(
         label="① 근무 의욕, 업무 능력, 집중도가 떨어졌다.",
@@ -1180,6 +1170,7 @@ class Har1_6(Page):
         'har1_11_6',
     ]
 
+    @staticmethod
     def is_displayed(player):
         if player.participant.HAR1_CASE == "PASS":
             return False
@@ -1199,6 +1190,7 @@ class Har1_6_2(Page):
         'har1_11_11',
     ]
 
+    @staticmethod
     def is_displayed(player):
         if player.participant.HAR1_CASE == "PASS":
             return False
@@ -1223,6 +1215,7 @@ class Har1_7(Page):
         'har1_13_2nd_op',
     ]
 
+    @staticmethod
     def is_displayed(player):
         if player.participant.HAR1_CASE == "PASS":
             return False

@@ -3,9 +3,9 @@
 {{ block title }}
 <div class="progress">
     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-         aria-valuenow="37" aria-valuemin="0" aria-valuemax="100"
-         style="width:37%">
-      37%
+         aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"
+         style="width:78%">
+      78%
     </div>
 </div>
     피해경험
@@ -18,27 +18,26 @@
     $(document).ready(function(){
         hide_others(
             [
-                'id_har1_13_1st',
-                'id_har1_13_2nd',
+                'id_har2_14_1st',
+                'id_har2_14_2nd',
             ],
-            8
+            9
         );
+        op_checker("id_har2_14_1st-9", "id_har2_14_1st_op_name");
+        op_checker("id_har2_14_2nd-9", "id_har2_14_2nd_op_name");
     })
 </script>
 
 {{ endblock }}
 
-
     <div class="alert border">
         <p>피해 이후 귀하에게 다음과 같은 상황이 발생한 적 있습니까? 다음 중 해당하는 것을 모두 골라주십시오. </p>
-            {{ formfield 'har1_11_1' }}
-            {{ formfield 'har1_11_2' }}
-            {{ formfield 'har1_11_3' }}
-            {{ formfield 'har1_11_4' }}
-            {{ formfield 'har1_11_5' }}
-            {{ formfield 'har1_11_6' }}
+            {{ formfield 'har2_12_7' }}
+            {{ formfield 'har2_12_8' }}
+            {{ formfield 'har2_12_9' }}
+            {{ formfield 'har2_12_10' }}
+            {{ formfield 'har2_12_11' }}
     </div>
-
     {{ next_button }}
 
 {{ endblock }}

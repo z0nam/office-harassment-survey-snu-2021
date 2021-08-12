@@ -438,6 +438,8 @@ class Player(BasePlayer):
         blank=True,
     )
 
+    #har2_6_2
+
     har2_12_7 = models.BooleanField(
         label="⑦ 회사가 가해자와의 합의를 종용함",
         widget=widgets.CheckboxInput,
@@ -468,6 +470,7 @@ class Player(BasePlayer):
         blank=True,
     )
 
+    #har2_7
 
     # 위 피해를 경험한 후 귀하에게는 다음과 같은 변화가 있었습니까? 다음 중 해당하는 것을 모두 골라주십시오.
 
@@ -1048,12 +1051,41 @@ class Har2_6(Page):
         'har2_12_4',
         'har2_12_5',
         'har2_12_6',
+    ]
+
+    @staticmethod
+    def is_displayed(player):
+        if player.participant.HAR2_CASE == "PASS":
+            return False
+        elif not player.participant.HAR2_EXP_GOGO:
+            return False
+        else:
+            return True
+
+
+class Har2_6_2(Page):
+    form_model = 'player'
+    form_fields = [
         'har2_12_7',
         'har2_12_8',
         'har2_12_9',
         'har2_12_10',
         'har2_12_11',
+    ]
 
+    @staticmethod
+    def is_displayed(player):
+        if player.participant.HAR2_CASE == "PASS":
+            return False
+        elif not player.participant.HAR2_EXP_GOGO:
+            return False
+        else:
+            return True
+
+
+class Har2_7(Page):
+    form_model = 'player'
+    form_fields = [
         'har2_13_1',
         'har2_13_2',
         'har2_13_3',
@@ -1239,6 +1271,8 @@ page_sequence = [
     Har2_4,
     Har2_5,
     Har2_6,
+    Har2_6_2,
+    Har2_7,
     Har2s,
     Har2s_2,
     Har2s_3,
