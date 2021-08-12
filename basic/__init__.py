@@ -63,6 +63,21 @@ class Player(BasePlayer):
         ]
     )
 
+    work_status = models.IntegerField(
+        label="직장 근무 상황",
+        widget=widgets.RadioSelect,
+        choices=[
+            [1, "본사 근무"],
+            [2, "지점 근무"],
+            [3, "기타(직접입력)"],
+        ]
+    )
+
+    work_status_op = models.StringField(
+        label="",
+        blank=True,
+    )
+
 
     #다음은 현재 직장 근무 상황에 대한 질문입니다.
 
@@ -89,11 +104,12 @@ class Player(BasePlayer):
         label="업무(직무)",
         widget=widgets.RadioSelect,
         choices=[
-            [1, "관리직 "],
-            [2, "사무/지원(후선)직 "],
-            [3, "영업직 "],
-            [4, "서비스직  "],
-            [5, "기타(직접입력)"],
+            [1, "관리 : 자산운용, 심사/채권관리, 기획, 홍보, 인사, 상품 개발 등 "],
+            [2, "사무/현장 지원 : 총무, 지점 대면 업무 등"],
+            [3, "영업/보상 : 개인, 법인 영업, 보상 등 "],
+            [4, "서비스 : 고객지원센터, 콜센터, 고객 방문 케어 서비스 등  "],
+            [5, "IT/전산 : IT/전산 업무 등"],
+            [6, "기타(직접입력)"],
         ]
     )
 
@@ -142,7 +158,7 @@ class Player(BasePlayer):
     )
 
     number_of_workers = models.IntegerField(
-        label="직장의 직원 규모",
+        label="직장(회사 전체)의 직원 규모. 귀하의 직장이 본사(본점), 공장, 지사, 영업소, 출장소, 분점 등으로 나눠져 있는 경우, 귀하가 출퇴근을 하고 있는 건물(혹은 일상적 업무 통제가 이뤄지는 곳)을 기준으로 ‘직장’을 떠올려 주십시오. 여러 부서가 한 건물안에 있는 경우, 건물 전체를 기준으로 답해주십시오",
         widget=widgets.RadioSelect,
         choices=[
             [1, "30명 미만  "],
@@ -171,6 +187,8 @@ class BasicInfo(Page):
         'born_year',
         'education',
         'work_area',
+        'work_status',
+        'work_status_op',
         'work_category',
         'work_category_op',
         'work_type',

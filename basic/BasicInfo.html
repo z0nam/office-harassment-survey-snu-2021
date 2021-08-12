@@ -14,7 +14,8 @@
 <script>
     $(document).ready(function(){
         op_checker("id_work_category-6", "id_work_category_op");
-        op_checker("id_work_type-4", "id_work_type_op");
+        op_checker("id_work_type-5", "id_work_type_op");
+        op_checker("id_work_status-2", "id_work_status_op");
     })
 </script>
 {{ endblock }}
@@ -23,11 +24,13 @@
 {{ block content }}
 
      <div class="alert border">
-        <h4> 다음은 개인 인적 사항에 대한 질문입니다. </h4>
-        {{ formfield 'gender' }}
-        {{ formfield 'born_year' }}
-        {{ formfield 'education' }}
-        {{ formfield 'work_area' }}
+         <h4> 다음은 개인 인적 사항에 대한 질문입니다. </h4>
+         {{ formfield 'gender' }}
+         {{ formfield 'born_year' }}
+         {{ formfield 'education' }}
+         {{ formfield 'work_area' }}
+         {{ formfield 'work_status' }}
+         {{ formfield 'work_status_op' }}
      </div>
 
      <div class="alert border">
