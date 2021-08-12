@@ -158,7 +158,7 @@ class Player(BasePlayer):
     )
 
     number_of_workers = models.IntegerField(
-        label="직장(회사 전체)의 직원 규모. 귀하의 직장이 본사(본점), 공장, 지사, 영업소, 출장소, 분점 등으로 나눠져 있는 경우, 귀하가 출퇴근을 하고 있는 건물(혹은 일상적 업무 통제가 이뤄지는 곳)을 기준으로 ‘직장’을 떠올려 주십시오. 여러 부서가 한 건물안에 있는 경우, 건물 전체를 기준으로 답해주십시오",
+        label="",
         widget=widgets.RadioSelect,
         choices=[
             [1, "30명 미만  "],
